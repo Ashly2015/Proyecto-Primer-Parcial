@@ -27,19 +27,6 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblIngresodeDatos" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
-                              <Component id="lblGeneraciondePlanilla" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -67,32 +54,10 @@
                                           <Component id="lblPuesto" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
                                           <Component id="lblTotalDescuentos" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="cmbxNombreEmpleado" min="-2" pref="120" max="-2" attributes="0"/>
-                                                          <Component id="lblNombreEmpleado" min="-2" pref="104" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="cmbxApellidoEmpleado" min="-2" pref="120" max="-2" attributes="0"/>
-                                                          <Component id="lblApellidoEmpleado" min="-2" pref="104" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Component id="lblAnticipos" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblOtrosDescuentos" min="-2" pref="120" max="-2" attributes="0"/>
-                                                  <Component id="lblSueldoBase" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtSueldoBase" min="-2" pref="120" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
                                           <Component id="lblIngreseNum3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="lblTotalDescuentos1" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="txtSueldoLiquido" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
@@ -102,6 +67,23 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lblFormadePago" min="-2" max="-2" attributes="0"/>
                                                   <Component id="cmbxFormadePago" min="-2" pref="120" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="cmbxNombreEmpleado" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <Component id="lblNombreEmpleado" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="cmbxApellidoEmpleado" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <Component id="lblApellidoEmpleado" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblSueldoBase" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtSueldoBase" min="-2" pref="120" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -138,6 +120,7 @@
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="txtAnticipos" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
                                                   <Component id="txtBonificacionIncentivo" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <Component id="lblAnticipos" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="1" attributes="0">
@@ -158,14 +141,32 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtOtrosDescuentos" min="-2" pref="120" max="-2" attributes="0"/>
                                                   <Component id="lblIngreseNum5" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <Component id="lblOtrosDescuentos" min="-2" pref="120" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="947" pref="1223" max="32767" attributes="0"/>
+                              <EmptySpace min="1111" pref="1226" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
+                              <Component id="lblGeneraciondePlanilla" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblIngresodeDatos" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -177,9 +178,11 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="lblGeneraciondePlanilla" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="lblIngresodeDatos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="lblDepartamento" min="-2" max="-2" attributes="0"/>
@@ -209,72 +212,60 @@
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="lblCalculodeDescuentos" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="lblSueldoBase" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtSueldoBase" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblPuesto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNombreEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblApellidoEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSueldoBase" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="cmbxApellidoEmpleado" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblPuesto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNombreEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblApellidoEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cmbxPuesto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmbxNombreEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cmbxPuesto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbxNombreEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbxApellidoEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSueldoBase" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblAnticipos" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDescuentosJ" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblOtrosDescuentos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="lblAnticipos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtAnticipos" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtDescuentosJ" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtOtrosDescuentos" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblIsr" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtIsr" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblIgss" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtIgss" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblIngreseNum3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblIngreseNum4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblIngreseNum5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtAnticipos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDescuentosJ" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtOtrosDescuentos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblIsr" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtIsr" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblIgss" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="txtIgss" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblIngreseNum3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblIngreseNum4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblIngreseNum5" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="lblTotalDescuentos" min="-2" max="-2" attributes="0"/>
@@ -294,12 +285,12 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="203" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -390,10 +381,14 @@
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSueldoBaseKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtComisiones">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtComisionesActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtComisionesKeyReleased"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtComisionesKeyTyped"/>
       </Events>
     </Component>
@@ -410,6 +405,7 @@
     <Component class="javax.swing.JTextField" name="txtBonificacionesExtra">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBonificacionesExtraActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBonificacionesExtraKeyReleased"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBonificacionesExtraKeyTyped"/>
       </Events>
     </Component>
@@ -450,6 +446,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIgssActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIgssKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblIsr">
@@ -463,11 +460,13 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIsrActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIsrKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAnticipos">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnticiposActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAnticiposKeyReleased"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAnticiposKeyTyped"/>
       </Events>
     </Component>
@@ -484,6 +483,7 @@
     <Component class="javax.swing.JTextField" name="txtDescuentosJ">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDescuentosJActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDescuentosJKeyReleased"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDescuentosJKeyTyped"/>
       </Events>
     </Component>
@@ -495,6 +495,7 @@
     <Component class="javax.swing.JTextField" name="txtOtrosDescuentos">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOtrosDescuentosActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtOtrosDescuentosKeyReleased"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtOtrosDescuentosKeyTyped"/>
       </Events>
     </Component>
@@ -708,6 +709,14 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingresar Empleado a N&#xf3;mina"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="*Si el empleado no tiene algun ingreso o descuento, coloque un 0 en la casilla."/>
       </Properties>
     </Component>
   </SubComponents>

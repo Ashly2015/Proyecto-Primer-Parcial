@@ -5,6 +5,7 @@
  */
 
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -23,6 +24,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum3.setVisible(false);
         lblIngreseNum4.setVisible(false);
         lblIngreseNum5.setVisible(false);
+        txtBonificacionIncentivo.setText("250.00"); txtSueldoBase.setText("6000.00");
+        DecimalFormat formato1 = new DecimalFormat("#.00");
+        
     }
 
     /**
@@ -81,6 +85,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum4 = new javax.swing.JLabel();
         lblIngreseNum5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,6 +106,11 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblSueldoBase.setText("Sueldo Base:");
 
         txtSueldoBase.setEditable(false);
+        txtSueldoBase.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSueldoBaseKeyReleased(evt);
+            }
+        });
 
         txtComisiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +118,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
             }
         });
         txtComisiones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtComisionesKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtComisionesKeyTyped(evt);
             }
@@ -123,6 +136,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
             }
         });
         txtBonificacionesExtra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBonificacionesExtraKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBonificacionesExtraKeyTyped(evt);
             }
@@ -154,6 +170,11 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtIgssActionPerformed(evt);
             }
         });
+        txtIgss.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIgssKeyReleased(evt);
+            }
+        });
 
         lblIsr.setText("ISR:");
 
@@ -163,6 +184,11 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtIsrActionPerformed(evt);
             }
         });
+        txtIsr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIsrKeyReleased(evt);
+            }
+        });
 
         txtAnticipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +196,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
             }
         });
         txtAnticipos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAnticiposKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtAnticiposKeyTyped(evt);
             }
@@ -185,6 +214,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
             }
         });
         txtDescuentosJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDescuentosJKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDescuentosJKeyTyped(evt);
             }
@@ -198,6 +230,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
             }
         });
         txtOtrosDescuentos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtOtrosDescuentosKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtOtrosDescuentosKeyTyped(evt);
             }
@@ -253,6 +288,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
 
         jButton1.setText("Ingresar Empleado a Nómina");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setText("*Si el empleado no tiene algun ingreso o descuento, coloque un 0 en la casilla.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -260,15 +298,6 @@ public class Generación_Nomina extends javax.swing.JFrame {
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblIngresodeDatos))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(311, 311, 311)
-                                .addComponent(lblGeneraciondePlanilla)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,24 +322,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
                                             .addComponent(cmbxPuesto, javax.swing.GroupLayout.Alignment.LEADING, 0, 120, Short.MAX_VALUE)
                                             .addComponent(lblPuesto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblTotalDescuentos, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(cmbxNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(lblNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(18, 18, 18)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(cmbxApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(lblApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addComponent(lblAnticipos))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblSueldoBase)
-                                                    .addComponent(txtSueldoBase, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addComponent(lblIngreseNum3)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -320,7 +333,20 @@ public class Generación_Nomina extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(lblFormadePago)
-                                                    .addComponent(cmbxFormadePago, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                    .addComponent(cmbxFormadePago, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(8, 8, 8)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cmbxNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cmbxApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lblSueldoBase)
+                                                    .addComponent(txtSueldoBase, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addComponent(lblCalculodeDescuentos)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,7 +371,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(txtAnticipos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtBonificacionIncentivo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(txtBonificacionIncentivo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblAnticipos, javax.swing.GroupLayout.Alignment.LEADING))
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                         .addGap(18, 18, 18)
@@ -360,8 +387,21 @@ public class Generación_Nomina extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(txtOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblIngreseNum5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addGap(947, 1223, Short.MAX_VALUE)))))
+                                                    .addComponent(lblIngreseNum5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGap(1111, 1226, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(311, 311, 311)
+                                .addComponent(lblGeneraciondePlanilla))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblIngresodeDatos)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -369,8 +409,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblGeneraciondePlanilla)
-                .addGap(47, 47, 47)
+                .addGap(27, 27, 27)
                 .addComponent(lblIngresodeDatos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -397,54 +439,47 @@ public class Generación_Nomina extends javax.swing.JFrame {
                             .addComponent(lblIngreseNum2))
                         .addGap(21, 21, 21)
                         .addComponent(lblCalculodeDescuentos))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblSueldoBase)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtSueldoBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cmbxApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblPuesto)
-                                .addComponent(lblNombreEmpleado)
-                                .addComponent(lblApellidoEmpleado))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmbxPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbxNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDescuentosJ)
-                            .addComponent(lblOtrosDescuentos)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(lblAnticipos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtAnticipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDescuentosJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblIsr)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtIsr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblIgss)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtIgss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(lblPuesto)
+                            .addComponent(lblNombreEmpleado)
+                            .addComponent(lblApellidoEmpleado)
+                            .addComponent(lblSueldoBase))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblIngreseNum3)
-                            .addComponent(lblIngreseNum4)
-                            .addComponent(lblIngreseNum5))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbxPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbxNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbxApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSueldoBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAnticipos)
+                            .addComponent(lblDescuentosJ)
+                            .addComponent(lblOtrosDescuentos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAnticipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDescuentosJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblIsr)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtIsr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblIgss)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtIgss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIngreseNum3)
+                    .addComponent(lblIngreseNum4)
+                    .addComponent(lblIngreseNum5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblTotalDescuentos)
@@ -459,8 +494,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
                             .addComponent(txtSueldoLiquido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbxFormadePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -483,7 +518,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBonificacionIncentivoActionPerformed
 
     private void txtSueldoDevengadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSueldoDevengadoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtSueldoDevengadoActionPerformed
 
     private void txtIgssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIgssActionPerformed
@@ -571,6 +606,389 @@ public class Generación_Nomina extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtOtrosDescuentosKeyTyped
 
+    private void txtSueldoBaseKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldoBaseKeyReleased
+
+        String strSueldoBase=txtSueldoBase.getText();
+        String strComisiones=txtComisiones.getText();
+        String strBonificacionesExtra=txtBonificacionesExtra.getText();
+        String strBonificacionIncentivo=txtBonificacionIncentivo.getText();
+        
+        if(strSueldoBase.equals("")==false&&strBonificacionIncentivo.equals("")==false){
+            //CALCULO DE SUELDO DEVENGADO
+//CONVERSION DE STRING A DOUBLE
+        double dbSueldoBase = Double.parseDouble(txtSueldoBase.getText());
+        double dbComisiones = Double.parseDouble(txtComisiones.getText());
+        double dbBonificacionesExtra = Double.parseDouble(txtBonificacionesExtra.getText());
+        double dbBonificacionIncentivo = Double.parseDouble(txtBonificacionIncentivo.getText());
+       
+        
+        //CALCULO DE SUELDO DEVENGADO
+       double dbSueldoDevengado=dbSueldoBase+dbComisiones+dbBonificacionesExtra+dbBonificacionIncentivo;
+       dbSueldoDevengado=Math.round(dbSueldoDevengado*100)/100d;
+       //CONVERSION DE DOUBLE A STRING
+       String strSueldoDevengado = String.valueOf(dbSueldoDevengado);
+       //IMPRESIÓN EN PANTALLA
+       txtSueldoDevengado.setText(strSueldoDevengado);
+       
+       //CALCULO DE DESCUENTOS
+       
+//IGSS
+       double dbIgss=dbSueldoBase*0.0483;
+       //CONVERSION DE DOUBLE A STRING
+       dbIgss=Math.round(dbIgss*100)/100d;
+       String strIgss=String.valueOf(dbIgss);
+       //IMPRESION EN PANTALLA
+       txtIgss.setText(strIgss);
+       
+//ISR
+       double dbIsr;
+       if(dbSueldoBase<6000){
+           dbIsr=0;
+       }
+       else{
+           //CALCULO TOTAL INGRESOS
+           double dbSueldoAnual=dbSueldoBase*12;
+           double dbBonificacionIncentivoAnual=dbBonificacionIncentivo*12;
+           double dbIngresoAnual=dbSueldoAnual+dbBonificacionIncentivoAnual;
+           //CALCULO TOTAL DESCUENTOS
+           double dbIgssAnual=dbIgss*12;
+           double dbDescuentoAnual=dbIgssAnual+48000;
+           //CALCULO RENTA BRUTA
+           double dbRentaBruta=dbIngresoAnual-dbDescuentoAnual;
+           //CALCULO ISR ANUAL
+           double dbIsrAnual=dbRentaBruta*0.05;
+           //CALCULO ISR MENSUAL
+           dbIsr=dbIsrAnual/12;
+           //CONVERSION DE DOUBLE A STRING
+           String strIsr=String.valueOf(dbIsr);
+           dbIsr=Math.round(dbIsr*100)/100d;
+           //IMPRESION EN PANTALLA
+           txtIsr.setText(strIsr);
+       }
+        }
+    }//GEN-LAST:event_txtSueldoBaseKeyReleased
+
+    private void txtComisionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComisionesKeyReleased
+
+        String strSueldoBase=txtSueldoBase.getText();
+        String strComisiones=txtComisiones.getText();
+        String strBonificacionesExtra=txtBonificacionesExtra.getText();
+        String strBonificacionIncentivo=txtBonificacionIncentivo.getText();
+        
+        if(strSueldoBase.equals("")==false&&strBonificacionIncentivo.equals("")==false){
+            //CALCULO DE SUELDO DEVENGADO
+//CONVERSION DE STRING A DOUBLE
+        double dbSueldoBase = Double.parseDouble(txtSueldoBase.getText());
+        double dbComisiones = Double.parseDouble(txtComisiones.getText());
+        double dbBonificacionesExtra = Double.parseDouble(txtBonificacionesExtra.getText());
+        double dbBonificacionIncentivo = Double.parseDouble(txtBonificacionIncentivo.getText());
+       
+        
+        //CALCULO DE SUELDO DEVENGADO
+       double dbSueldoDevengado=dbSueldoBase+dbComisiones+dbBonificacionesExtra+dbBonificacionIncentivo;
+       dbSueldoDevengado=Math.round(dbSueldoDevengado*100)/100;
+       //CONVERSION DE DOUBLE A STRING
+       String strSueldoDevengado = String.valueOf(dbSueldoDevengado);
+       //IMPRESIÓN EN PANTALLA
+       txtSueldoDevengado.setText(strSueldoDevengado);
+       
+       //CALCULO DE DESCUENTOS
+       
+//IGSS
+       double dbIgss=dbSueldoBase*0.0483;
+       //CONVERSION DE DOUBLE A STRING
+       dbIgss=Math.round(dbIgss*100)/100;
+       String strIgss=String.valueOf(dbIgss);
+       //IMPRESION EN PANTALLA
+       txtIgss.setText(strIgss);
+       
+//ISR
+       double dbIsr;
+       if(dbSueldoBase<6000){
+           dbIsr=0;
+       }
+       else{
+           //CALCULO TOTAL INGRESOS
+           double dbSueldoAnual=dbSueldoBase*12;
+           double dbBonificacionIncentivoAnual=dbBonificacionIncentivo*12;
+           double dbIngresoAnual=dbSueldoAnual+dbBonificacionIncentivoAnual;
+           //CALCULO TOTAL DESCUENTOS
+           double dbIgssAnual=dbIgss*12;
+           double dbDescuentoAnual=dbIgssAnual+48000;
+           //CALCULO RENTA BRUTA
+           double dbRentaBruta=dbIngresoAnual-dbDescuentoAnual;
+           //CALCULO ISR ANUAL
+           double dbIsrAnual=dbRentaBruta*0.05;
+           //CALCULO ISR MENSUAL
+           dbIsr=dbIsrAnual/12;
+           //CONVERSION DE DOUBLE A STRING
+           String strIsr=String.valueOf(dbIsr);
+           dbIsr=Math.round(dbIsr*100)/100;
+           //IMPRESION EN PANTALLA
+           txtIsr.setText(strIsr);
+       }
+        }
+    }//GEN-LAST:event_txtComisionesKeyReleased
+
+    private void txtBonificacionesExtraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBonificacionesExtraKeyReleased
+
+        String strSueldoBase=txtSueldoBase.getText();
+        String strComisiones=txtComisiones.getText();
+        String strBonificacionesExtra=txtBonificacionesExtra.getText();
+        String strBonificacionIncentivo=txtBonificacionIncentivo.getText();
+        
+        if(strSueldoBase.equals("")==false&&strBonificacionIncentivo.equals("")==false){
+            //CALCULO DE SUELDO DEVENGADO
+//CONVERSION DE STRING A DOUBLE
+        double dbSueldoBase = Double.parseDouble(txtSueldoBase.getText());
+        double dbComisiones = Double.parseDouble(txtComisiones.getText());
+        double dbBonificacionesExtra = Double.parseDouble(txtBonificacionesExtra.getText());
+        double dbBonificacionIncentivo = Double.parseDouble(txtBonificacionIncentivo.getText());
+       
+        
+        //CALCULO DE SUELDO DEVENGADO
+       double dbSueldoDevengado=dbSueldoBase+dbComisiones+dbBonificacionesExtra+dbBonificacionIncentivo;
+       dbSueldoDevengado=Math.round(dbSueldoDevengado*100)/100d;
+       //CONVERSION DE DOUBLE A STRING
+       String strSueldoDevengado = String.valueOf(dbSueldoDevengado);
+       //IMPRESIÓN EN PANTALLA
+       txtSueldoDevengado.setText(strSueldoDevengado);
+       
+       //CALCULO DE DESCUENTOS
+       
+//IGSS
+       double dbIgss=dbSueldoBase*0.0483;
+       //CONVERSION DE DOUBLE A STRING
+       dbIgss=Math.round(dbIgss*100)/100d;
+       String strIgss=String.valueOf(dbIgss);
+       //IMPRESION EN PANTALLA
+       txtIgss.setText(strIgss);
+       
+//ISR
+       double dbIsr;
+       if(dbSueldoBase<6000){
+           dbIsr=0;
+       }
+       else{
+           //CALCULO TOTAL INGRESOS
+           double dbSueldoAnual=dbSueldoBase*12;
+           double dbBonificacionIncentivoAnual=dbBonificacionIncentivo*12;
+           double dbIngresoAnual=dbSueldoAnual+dbBonificacionIncentivoAnual;
+           //CALCULO TOTAL DESCUENTOS
+           double dbIgssAnual=dbIgss*12;
+           double dbDescuentoAnual=dbIgssAnual+48000;
+           //CALCULO RENTA BRUTA
+           double dbRentaBruta=dbIngresoAnual-dbDescuentoAnual;
+           //CALCULO ISR ANUAL
+           double dbIsrAnual=dbRentaBruta*0.05;
+           //CALCULO ISR MENSUAL
+           dbIsr=dbIsrAnual/12;
+           //CONVERSION DE DOUBLE A STRING
+           String strIsr=String.valueOf(dbIsr);
+           dbIsr=Math.round(dbIsr*100)/100d;
+           //IMPRESION EN PANTALLA
+           txtIsr.setText(strIsr);
+       }
+        }
+
+    }//GEN-LAST:event_txtBonificacionesExtraKeyReleased
+
+    private void txtIgssKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIgssKeyReleased
+
+        String strIgss=txtIgss.getText();
+        String strIsr=txtIsr.getText();
+        String strAnticipos=txtAnticipos.getText();
+        String strDescuentosJ=txtDescuentosJ.getText();
+        String strOtrosDescuentos=txtOtrosDescuentos.getText();
+        
+        if(strIgss.equals("")==false){
+
+//CONVERSION DE STRING A DOUBLE
+        double dbIgss = Double.parseDouble(txtIgss.getText());
+        double dbIsr = Double.parseDouble(txtIsr.getText());
+        double dbAnticipos = Double.parseDouble(txtAnticipos.getText());
+        double dbDescuentosJ = Double.parseDouble(txtDescuentosJ.getText());
+        double dbOtrosDescuentos=Double.parseDouble(txtOtrosDescuentos.getText());
+       
+        
+        //CALCULO DE TOTAL DESCUENTOS
+       double dbTotalDescuentos=dbIgss+dbIsr+dbAnticipos+dbDescuentosJ+dbOtrosDescuentos;
+       dbTotalDescuentos=Math.round(dbTotalDescuentos*100)/100d;
+       //CONVERSION DE DOUBLE A STRING
+       String strTotalDescuentos = String.valueOf(dbTotalDescuentos);
+       //IMPRESIÓN EN PANTALLA
+       txtTotalDescuentos.setText(strTotalDescuentos);
+
+       //CALCULO DE SUELDO LIQUIDO
+       //CONVERSION DE STRING A DOUBLE
+       double dbIngresos = Double.parseDouble(txtSueldoDevengado.getText());
+       
+       double dbSueldoLiquido=dbIngresos-dbTotalDescuentos;
+       //CONVERSION DE DOUBLE A STRING
+       dbSueldoLiquido=Math.round(dbSueldoLiquido*100)/100d;
+       String strSueldoLiquido=String.valueOf(dbSueldoLiquido);
+       //IMPRESION EN PANTALLA
+       txtSueldoLiquido.setText(strSueldoLiquido);
+
+        }
+    }//GEN-LAST:event_txtIgssKeyReleased
+
+    private void txtIsrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIsrKeyReleased
+String strIgss=txtIgss.getText();
+        String strIsr=txtIsr.getText();
+        String strAnticipos=txtAnticipos.getText();
+        String strDescuentosJ=txtDescuentosJ.getText();
+        String strOtrosDescuentos=txtOtrosDescuentos.getText();
+        
+        if(strIgss.equals("")==false){
+
+//CONVERSION DE STRING A DOUBLE
+        double dbIgss = Double.parseDouble(txtIgss.getText());
+        double dbIsr = Double.parseDouble(txtIsr.getText());
+        double dbAnticipos = Double.parseDouble(txtAnticipos.getText());
+        double dbDescuentosJ = Double.parseDouble(txtDescuentosJ.getText());
+        double dbOtrosDescuentos=Double.parseDouble(txtOtrosDescuentos.getText());
+       
+        
+        //CALCULO DE TOTAL DESCUENTOS
+       double dbTotalDescuentos=dbIgss+dbIsr+dbAnticipos+dbDescuentosJ+dbOtrosDescuentos;
+       dbTotalDescuentos=Math.round(dbTotalDescuentos*100)/100d;
+       //CONVERSION DE DOUBLE A STRING
+       String strTotalDescuentos = String.valueOf(dbTotalDescuentos);
+       //IMPRESIÓN EN PANTALLA
+       txtTotalDescuentos.setText(strTotalDescuentos);
+
+       //CALCULO DE SUELDO LIQUIDO
+       //CONVERSION DE STRING A DOUBLE
+       double dbIngresos = Double.parseDouble(txtSueldoDevengado.getText());
+       
+       double dbSueldoLiquido=dbIngresos-dbTotalDescuentos;
+       //CONVERSION DE DOUBLE A STRING
+       dbSueldoLiquido=Math.round(dbSueldoLiquido*100)/100d;
+       String strSueldoLiquido=String.valueOf(dbSueldoLiquido);
+       //IMPRESION EN PANTALLA
+       txtSueldoLiquido.setText(strSueldoLiquido);
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIsrKeyReleased
+
+    private void txtAnticiposKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnticiposKeyReleased
+String strIgss=txtIgss.getText();
+        String strIsr=txtIsr.getText();
+        String strAnticipos=txtAnticipos.getText();
+        String strDescuentosJ=txtDescuentosJ.getText();
+        String strOtrosDescuentos=txtOtrosDescuentos.getText();
+        
+        if(strIgss.equals("")==false){
+
+//CONVERSION DE STRING A DOUBLE
+        double dbIgss = Double.parseDouble(txtIgss.getText());
+        double dbIsr = Double.parseDouble(txtIsr.getText());
+        double dbAnticipos = Double.parseDouble(txtAnticipos.getText());
+        double dbDescuentosJ = Double.parseDouble(txtDescuentosJ.getText());
+        double dbOtrosDescuentos=Double.parseDouble(txtOtrosDescuentos.getText());
+       
+        
+        //CALCULO DE TOTAL DESCUENTOS
+       double dbTotalDescuentos=dbIgss+dbIsr+dbAnticipos+dbDescuentosJ+dbOtrosDescuentos;
+       dbTotalDescuentos=Math.round(dbTotalDescuentos*100)/100d;
+       //CONVERSION DE DOUBLE A STRING
+       String strTotalDescuentos = String.valueOf(dbTotalDescuentos);
+       //IMPRESIÓN EN PANTALLA
+       txtTotalDescuentos.setText(strTotalDescuentos);
+
+       //CALCULO DE SUELDO LIQUIDO
+       //CONVERSION DE STRING A DOUBLE
+       double dbIngresos = Double.parseDouble(txtSueldoDevengado.getText());
+       
+       double dbSueldoLiquido=dbIngresos-dbTotalDescuentos;
+       //CONVERSION DE DOUBLE A STRING
+       dbSueldoLiquido=Math.round(dbSueldoLiquido*100)/100d;
+       String strSueldoLiquido=String.valueOf(dbSueldoLiquido);
+       //IMPRESION EN PANTALLA
+       txtSueldoLiquido.setText(strSueldoLiquido);
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnticiposKeyReleased
+
+    private void txtDescuentosJKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescuentosJKeyReleased
+String strIgss=txtIgss.getText();
+        String strIsr=txtIsr.getText();
+        String strAnticipos=txtAnticipos.getText();
+        String strDescuentosJ=txtDescuentosJ.getText();
+        String strOtrosDescuentos=txtOtrosDescuentos.getText();
+        
+        if(strIgss.equals("")==false){
+
+//CONVERSION DE STRING A DOUBLE
+        double dbIgss = Double.parseDouble(txtIgss.getText());
+        double dbIsr = Double.parseDouble(txtIsr.getText());
+        double dbAnticipos = Double.parseDouble(txtAnticipos.getText());
+        double dbDescuentosJ = Double.parseDouble(txtDescuentosJ.getText());
+        double dbOtrosDescuentos=Double.parseDouble(txtOtrosDescuentos.getText());
+       
+        
+        //CALCULO DE TOTAL DESCUENTOS
+       double dbTotalDescuentos=dbIgss+dbIsr+dbAnticipos+dbDescuentosJ+dbOtrosDescuentos;
+       dbTotalDescuentos=Math.round(dbTotalDescuentos*100)/100d;
+       //CONVERSION DE DOUBLE A STRING
+       String strTotalDescuentos = String.valueOf(dbTotalDescuentos);
+       //IMPRESIÓN EN PANTALLA
+       txtTotalDescuentos.setText(strTotalDescuentos);
+
+       //CALCULO DE SUELDO LIQUIDO
+       //CONVERSION DE STRING A DOUBLE
+       double dbIngresos = Double.parseDouble(txtSueldoDevengado.getText());
+       
+       double dbSueldoLiquido=dbIngresos-dbTotalDescuentos;
+       //CONVERSION DE DOUBLE A STRING
+       dbSueldoLiquido=Math.round(dbSueldoLiquido*100)/100d;
+       String strSueldoLiquido=String.valueOf(dbSueldoLiquido);
+       //IMPRESION EN PANTALLA
+       txtSueldoLiquido.setText(strSueldoLiquido);
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescuentosJKeyReleased
+
+    private void txtOtrosDescuentosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOtrosDescuentosKeyReleased
+String strIgss=txtIgss.getText();
+        String strIsr=txtIsr.getText();
+        String strAnticipos=txtAnticipos.getText();
+        String strDescuentosJ=txtDescuentosJ.getText();
+        String strOtrosDescuentos=txtOtrosDescuentos.getText();
+        
+        if(strIgss.equals("")==false){
+
+//CONVERSION DE STRING A DOUBLE
+        double dbIgss = Double.parseDouble(txtIgss.getText());
+        double dbIsr = Double.parseDouble(txtIsr.getText());
+        double dbAnticipos = Double.parseDouble(txtAnticipos.getText());
+        double dbDescuentosJ = Double.parseDouble(txtDescuentosJ.getText());
+        double dbOtrosDescuentos=Double.parseDouble(txtOtrosDescuentos.getText());
+       
+        
+        //CALCULO DE TOTAL DESCUENTOS
+       double dbTotalDescuentos=dbIgss+dbIsr+dbAnticipos+dbDescuentosJ+dbOtrosDescuentos;
+       dbTotalDescuentos=Math.round(dbTotalDescuentos*100)/100d;
+       //CONVERSION DE DOUBLE A STRING
+       String strTotalDescuentos = String.valueOf(dbTotalDescuentos);
+       //IMPRESIÓN EN PANTALLA
+       txtTotalDescuentos.setText(strTotalDescuentos);
+
+       //CALCULO DE SUELDO LIQUIDO
+       //CONVERSION DE STRING A DOUBLE
+       double dbIngresos = Double.parseDouble(txtSueldoDevengado.getText());
+       
+       double dbSueldoLiquido=dbIngresos-dbTotalDescuentos;
+       //CONVERSION DE DOUBLE A STRING
+       dbSueldoLiquido=Math.round(dbSueldoLiquido*100)/100d;
+       String strSueldoLiquido=String.valueOf(dbSueldoLiquido);
+       //IMPRESION EN PANTALLA
+       txtSueldoLiquido.setText(strSueldoLiquido);
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOtrosDescuentosKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -615,6 +1033,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbxNombreEmpleado;
     private javax.swing.JComboBox<String> cmbxPuesto;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAnticipos;
