@@ -5,6 +5,8 @@
  */
 package mantenimiento.empleado;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ranbr
@@ -48,7 +50,7 @@ public class Altas extends javax.swing.JFrame {
         cmbMes = new javax.swing.JComboBox<>();
         cmbAño = new javax.swing.JComboBox<>();
         txtUbicacion = new java.awt.TextField();
-        txtTelefono1 = new java.awt.TextField();
+        txtTelefono = new java.awt.TextField();
         txtSueldo = new java.awt.TextField();
         btnNuevoPuesto = new javax.swing.JButton();
         btnNuevoDepartamento1 = new javax.swing.JButton();
@@ -103,9 +105,9 @@ public class Altas extends javax.swing.JFrame {
             }
         });
 
-        txtTelefono1.addActionListener(new java.awt.event.ActionListener() {
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefono1ActionPerformed(evt);
+                txtTelefonoActionPerformed(evt);
             }
         });
 
@@ -120,6 +122,11 @@ public class Altas extends javax.swing.JFrame {
 
         btnNuevoDepartamento1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnNuevoDepartamento1.setText("CREAR NUEVO DEPATAMENTO");
+        btnNuevoDepartamento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoDepartamento1ActionPerformed(evt);
+            }
+        });
 
         label12.setText("ALTAS EMPLEADO");
 
@@ -158,7 +165,7 @@ public class Altas extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(50, 50, 50)
-                                .addComponent(txtTelefono1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -226,7 +233,7 @@ public class Altas extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,20 +250,80 @@ public class Altas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarActionPerformed
-        // TODO add your handling code here:
+        String nombre = txtNombre.getText().trim();
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String apellido = txtApellido.getText().trim();
+        if (apellido.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el apellido de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String departamento = cmbDepartamento.getSelectedItem().toString();
+        if (departamento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String puesto = cmbPuesto.getSelectedItem().toString();
+        if (puesto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String dia = cmbDia.getSelectedItem().toString();
+        if (dia.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String mes = cmbMes.getSelectedItem().toString();
+        if (mes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String año = cmbAño.getSelectedItem().toString();
+        if (año.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String telefono = txtTelefono.getText().trim();
+        if (telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el telefono de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String ubicacion = txtUbicacion.getText().trim();
+        if (ubicacion.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso la ubicacion de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String sueldo = txtSueldo.getText().trim();
+        if (sueldo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el sueldo de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+
+// TODO add your handling code here:
     }//GEN-LAST:event_txtIngresarActionPerformed
 
     private void txtUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUbicacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUbicacionActionPerformed
 
-    private void txtTelefono1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefono1ActionPerformed
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefono1ActionPerformed
+    }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void txtSueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSueldoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSueldoActionPerformed
+
+    private void btnNuevoDepartamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoDepartamento1ActionPerformed
+Departamento verDepartamento=new Departamento();     
+verDepartamento.setVisible(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoDepartamento1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,7 +385,7 @@ public class Altas extends javax.swing.JFrame {
     private javax.swing.JButton txtIngresar;
     private java.awt.TextField txtNombre;
     private java.awt.TextField txtSueldo;
-    private java.awt.TextField txtTelefono1;
+    private java.awt.TextField txtTelefono;
     private java.awt.TextField txtUbicacion;
     // End of variables declaration//GEN-END:variables
 }
