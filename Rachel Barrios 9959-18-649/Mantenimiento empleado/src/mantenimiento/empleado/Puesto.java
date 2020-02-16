@@ -5,6 +5,8 @@
  */
 package mantenimiento.empleado;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ranbr
@@ -176,7 +178,11 @@ public class Puesto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarPuestoActionPerformed
 
     private void btnCrearPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPuestoActionPerformed
-        // TODO add your handling code here:
+String puesto = txtCrearPuesto.getText().trim();
+        if (puesto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del puesto!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearPuestoActionPerformed
 
     private void btnEliminarPuesto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPuesto1ActionPerformed

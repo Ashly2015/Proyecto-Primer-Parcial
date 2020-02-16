@@ -338,6 +338,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="CREAR NUEVO PUESTO"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoPuestoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnNuevoDepartamento1">
       <Properties>

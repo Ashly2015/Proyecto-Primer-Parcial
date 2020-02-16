@@ -5,6 +5,8 @@
  */
 package mantenimiento.empleado;
 
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -119,6 +121,11 @@ public class Altas extends javax.swing.JFrame {
 
         btnNuevoPuesto.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnNuevoPuesto.setText("CREAR NUEVO PUESTO");
+        btnNuevoPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoPuestoActionPerformed(evt);
+            }
+        });
 
         btnNuevoDepartamento1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnNuevoDepartamento1.setText("CREAR NUEVO DEPATAMENTO");
@@ -271,37 +278,82 @@ public class Altas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String dia = cmbDia.getSelectedItem().toString();
-        if (dia.isEmpty()) {
+        int dia,mes,año,telefono;
+        
+        String _dia = cmbDia.getSelectedItem().toString();
+        if (_dia.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String mes = cmbMes.getSelectedItem().toString();
-        if (mes.isEmpty()) {
+        try {
+            dia = Integer.parseInt(_dia);
+        } catch(NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número entero", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String _mes = cmbMes.getSelectedItem().toString();
+        if (_mes.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String año = cmbAño.getSelectedItem().toString();
-        if (año.isEmpty()) {
+        try {
+            mes = Integer.parseInt(_mes);
+        } catch(NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número entero", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String _año = cmbAño.getSelectedItem().toString();
+        if (_año.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No selecciono ninguna opcion!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String telefono = txtTelefono.getText().trim();
-        if (telefono.isEmpty()) {
+        try {
+            año = Integer.parseInt(_año);
+        } catch(NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número entero", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String _telefono = txtTelefono.getText().trim();
+        if (_telefono.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el telefono de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        try {
+            telefono = Integer.parseInt(_telefono);
+        } catch(NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número entero", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
+        
+        
         String ubicacion = txtUbicacion.getText().trim();
         if (ubicacion.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso la ubicacion de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String sueldo = txtSueldo.getText().trim();
-        if (sueldo.isEmpty()) {
+        String _sueldo = txtSueldo.getText().trim();
+        if (_sueldo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el sueldo de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+        float sueldo;
+        try {
+            sueldo = Float.parseFloat(_sueldo);
+        } catch(NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            AccesoAleatorio.crearFileEmpleado( new File("personas.dat") );
+            AccesoAleatorio.añadirPersona( new MantenimientoEmpleado(nombre,apellido,departamento,puesto, dia, mes, año, telefono, ubicacion, sueldo,true) );
+            AccesoAleatorio.cerrar();
+            JOptionPane.showMessageDialog(this, "El registro se realizó correctamente.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error en la escritura de datos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
 // TODO add your handling code here:
     }//GEN-LAST:event_txtIngresarActionPerformed
@@ -324,6 +376,12 @@ verDepartamento.setVisible(true);
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoDepartamento1ActionPerformed
+
+    private void btnNuevoPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPuestoActionPerformed
+     Puesto verPuesto=new Puesto();     
+verPuesto.setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoPuestoActionPerformed
 
     /**
      * @param args the command line arguments

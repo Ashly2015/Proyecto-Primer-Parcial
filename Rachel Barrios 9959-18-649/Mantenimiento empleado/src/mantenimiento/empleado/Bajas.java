@@ -252,6 +252,8 @@ public class Bajas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarActionPerformed
+
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIngresarActionPerformed
 

@@ -5,6 +5,8 @@
  */
 package mantenimiento.empleado;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ranbr
@@ -164,10 +166,20 @@ public class Departamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearDepartamentoActionPerformed
+String departamento = txtCrearDepartamento.getText().trim();
+        if (departamento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del departamento!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearDepartamentoActionPerformed
 
     private void btnBuscarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDepartamentoActionPerformed
+ String departamento = txtBuscarDepartamento.getText().trim();
+        if(departamento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del departamento!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarDepartamentoActionPerformed
 
