@@ -31,6 +31,7 @@ public class MantenimientoEmpleado implements Serializable {
 
         activo = true;
     }
+    
 
     public MantenimientoEmpleado(String nombre, String apellido, String departamento, String puesto, int dia, int mes, int año, int telefono, String ubicacion, float sueldo, boolean activo) {
         this.nombre = nombre;
@@ -45,6 +46,13 @@ public class MantenimientoEmpleado implements Serializable {
         this.sueldo = sueldo;
         this.activo = activo;
     }
+
+    public MantenimientoEmpleado(String departamento, boolean activo) {
+        this.departamento = departamento;
+        this.activo = activo;
+    }
+
+    
 
     public String getNombre() {
         return nombre;

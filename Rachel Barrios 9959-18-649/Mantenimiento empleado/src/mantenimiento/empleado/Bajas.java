@@ -5,6 +5,10 @@
  */
 package mantenimiento.empleado;
 
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ranbr
@@ -252,7 +256,14 @@ public class Bajas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarActionPerformed
-
+try {
+            AccesoAleatorio.crearFileEmpleado(new File("empleado.dat"));
+            if( AccesoAleatorio.eliminarEmpleado(cmbId.getSelectedItem().toString()) )
+                JOptionPane.showMessageDialog(this, "El registro correspondiente fue eliminado correctamente.", "Eliminación correcta", JOptionPane.INFORMATION_MESSAGE);
+            else JOptionPane.showMessageDialog(this, "Error al intentar eliminar un registro inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error en la eliminación de registros.", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
         
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIngresarActionPerformed
