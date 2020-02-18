@@ -257,7 +257,7 @@ public class Bajas extends javax.swing.JFrame {
 
     private void txtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarActionPerformed
 try {
-            AccesoAleatorio.crearFileEmpleado(new File("empleado.dat"));
+            AccesoAleatorio.crearFileEmpleado(new File("empleado.txt"));
             if( AccesoAleatorio.eliminarEmpleado(cmbId.getSelectedItem().toString()) )
                 JOptionPane.showMessageDialog(this, "El registro correspondiente fue eliminado correctamente.", "Eliminación correcta", JOptionPane.INFORMATION_MESSAGE);
             else JOptionPane.showMessageDialog(this, "Error al intentar eliminar un registro inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
