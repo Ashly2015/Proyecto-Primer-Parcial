@@ -1,4 +1,5 @@
 package mantenimiento.empleado;
+
 import java.io.Serializable;
 
 /**
@@ -15,8 +16,6 @@ public class MantenimientoEmpleado implements Serializable {
     private String ubicacion;
     private float sueldo;
     private boolean activo;
-    private int id;
-   
 
     public MantenimientoEmpleado() {
         nombre = "NN";
@@ -29,13 +28,12 @@ public class MantenimientoEmpleado implements Serializable {
         ubicacion = "NN";
         telefono = 0;
         sueldo = 0;
-        id=0;
 
         activo = true;
     }
     
 
-    public MantenimientoEmpleado(int idEmpleado,String nombre, String apellido, String departamento, String puesto, int dia, int mes, int año, int telefono, String ubicacion, float sueldo, boolean activo) {
+    public MantenimientoEmpleado(String nombre, String apellido, String departamento, String puesto, int dia, int mes, int año, int telefono, String ubicacion, float sueldo, boolean activo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.departamento = departamento;
@@ -49,12 +47,10 @@ public class MantenimientoEmpleado implements Serializable {
         this.activo = activo;
     }
 
-    public MantenimientoEmpleado(int id,String departamento, boolean activo) {
+    public MantenimientoEmpleado(String departamento, boolean activo) {
         this.departamento = departamento;
         this.activo = activo;
     }
-
-    
 
     
 
@@ -146,19 +142,9 @@ public class MantenimientoEmpleado implements Serializable {
         this.activo = activo;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-
     @Override
     public String toString() {
-        return "\nId: " + id
-                +"\nNombre: " + nombre
+        return "\nNombre: " + nombre
                 + "\nApellido: " + apellido
                 + "\nDepartamento: " + departamento
                 + "\nPuesto: " + puesto
@@ -172,11 +158,5 @@ public class MantenimientoEmpleado implements Serializable {
     public int getTamaño() {
         return getNombre().length() * 2 + 2 + 4 + 1;
     }
-    
-    public int getTamañoDepto() {
-        return getDepartamento().length() * 2 + 2 + 4 + 1;
-    }
-    
-    
 
 }

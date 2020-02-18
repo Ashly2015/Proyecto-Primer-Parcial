@@ -257,7 +257,6 @@ public class Altas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarActionPerformed
-       int idEmpleado=0;
         String nombre = txtNombre.getText().trim();
         if (nombre.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -347,16 +346,14 @@ public class Altas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debe ingresar un número", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-         idEmpleado++;
         try {
-            AccesoAleatorio.crearFileEmpleado( new File("empleado.txt") );
-            AccesoAleatorio.añadirPersona( new MantenimientoEmpleado(idEmpleado,nombre,apellido,departamento,puesto, dia, mes, año, telefono, ubicacion, sueldo,true) );
+            AccesoAleatorio.crearFileEmpleado( new File("empleado.dat") );
+            AccesoAleatorio.añadirPersona( new MantenimientoEmpleado(nombre,apellido,departamento,puesto, dia, mes, año, telefono, ubicacion, sueldo,true) );
             AccesoAleatorio.cerrar();
             JOptionPane.showMessageDialog(this, "El registro se realizó correctamente.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error en la escritura de datos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-       
 
 // TODO add your handling code here:
     }//GEN-LAST:event_txtIngresarActionPerformed
