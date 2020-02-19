@@ -169,15 +169,16 @@ public class Departamento extends javax.swing.JFrame {
 
     private void btnCrearDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearDepartamentoActionPerformed
 String departamento = txtCrearDepartamento.getText().trim();
-
+int id=0;
+id++;
         if (departamento.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del departamento!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         try {
-            AccesoAleatorio.crearFileEmpleado( new File("departamento.dat") );
-            AccesoAleatorio.añadirPersona( new MantenimientoEmpleado(departamento,true) );
+            AccesoAleatorio.crearFileDepartamento( new File("departamento.txt") );
+            AccesoAleatorio.añadirDepartamento( new MantenimientoEmpleado(id,departamento,true) );
             AccesoAleatorio.cerrar();
             JOptionPane.showMessageDialog(this, "El registro se realizó correctamente.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
@@ -193,13 +194,13 @@ String departamento = txtCrearDepartamento.getText().trim();
             return;
         } 
         try {
-            AccesoAleatorio.crearFileEmpleado( new File("departamento.dat") );
-            int i = AccesoAleatorio.buscarRegistro( departamento );
+            AccesoAleatorio.crearFileDepartamento( new File("departamento.txt") );
+            int i = AccesoAleatorio.buscarRegistroDepto( departamento );
             if(i==-1) {
                 JOptionPane.showMessageDialog(this, "Ningún registro coincide con los datos de búsqueda.", "Advertencia", JOptionPane.WARNING_MESSAGE);             
                 return;
             }
-            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: "+AccesoAleatorio.getEmpleado(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: "+AccesoAleatorio.getDepartamentos(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
             AccesoAleatorio.cerrar();
         } catch(IOException e) {
             JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -209,8 +210,8 @@ String departamento = txtCrearDepartamento.getText().trim();
 
     private void btnEliminarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDepartamentoActionPerformed
  try {
-            AccesoAleatorio.crearFileEmpleado(new File("departamento.dat"));
-            if( AccesoAleatorio.eliminarEmpleado(txtEliminarDepartamento.getText()) )
+            AccesoAleatorio.crearFileDepartamento(new File("departamento.txt"));
+            if( AccesoAleatorio.eliminarDepartamento(txtEliminarDepartamento.getText()) )
                 JOptionPane.showMessageDialog(this, "El registro correspondiente fue eliminado correctamente.", "Eliminación correcta", JOptionPane.INFORMATION_MESSAGE);
             else JOptionPane.showMessageDialog(this, "Error al intentar eliminar un registro inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
