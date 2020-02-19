@@ -4,10 +4,17 @@
  * and open the template in the editor.
  */
 
-import java.io.*;
+import static java.awt.PageAttributes.MediaType.C;
+import java.io.BufferedReader;
 import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Scanner;
 /**
  *
  * @author zuzu-ai
@@ -17,6 +24,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
     /**
      * Creates new form Generación_Nomina
      */
+    AccesoAleatorioN aleatorio=new AccesoAleatorioN();
     public Generación_Nomina() {
         initComponents();
         lblIngreseNum1.setVisible(false);
@@ -27,6 +35,52 @@ public class Generación_Nomina extends javax.swing.JFrame {
         txtBonificacionIncentivo.setText("250.00"); txtSueldoBase.setText("6000.00");
         DecimalFormat formato1 = new DecimalFormat("#.00");
         
+        
+        //PONER EN EL BOTON DE GENERACIÓN NOMINA
+        
+        //REFRESCAR LISTA DE DEPARTAMENTOS
+                int registros=1000;
+        FileReader fr;
+        try {
+            fr = new FileReader("Departamentos.txt");
+            BufferedReader bf=new BufferedReader(fr);
+           for(int i=0;i<registros;i++){
+            String dato= bf.readLine();
+            cmbxDepartamento.addItem(dato);
+            i=i++;
+           } 
+            
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
+        
+        //REFRESCAR LISTA DE NOMBRES
+        try {
+            fr = new FileReader("NombreEmpleados.txt");
+            BufferedReader bf=new BufferedReader(fr);
+           for(int i=0;i<registros;i++){
+            String dato= bf.readLine();
+            cmbxNombreEmpleado.addItem(dato);
+            i=i++;
+           } 
+            
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
+        
+        
+        try {
+            fr = new FileReader("Puestos.txt");
+            BufferedReader bf=new BufferedReader(fr);
+           for(int i=0;i<registros;i++){
+            String dato= bf.readLine();
+            cmbxPuesto.addItem(dato);
+            i=i++;
+           } 
+            
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
     }
 
     /**
@@ -46,8 +100,6 @@ public class Generación_Nomina extends javax.swing.JFrame {
         cmbxPuesto = new javax.swing.JComboBox<>();
         lblNombreEmpleado = new javax.swing.JLabel();
         cmbxNombreEmpleado = new javax.swing.JComboBox<>();
-        lblApellidoEmpleado = new javax.swing.JLabel();
-        cmbxApellidoEmpleado = new javax.swing.JComboBox<>();
         lblSueldoBase = new javax.swing.JLabel();
         txtSueldoBase = new javax.swing.JTextField();
         txtComisiones = new javax.swing.JTextField();
@@ -86,24 +138,48 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Generación de Nómina");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblIngresodeDatos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblIngresodeDatos.setText("Ingreso de Datos");
+        getContentPane().add(lblIngresodeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         lblGeneraciondePlanilla.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblGeneraciondePlanilla.setText("Generación de Planilla");
+        getContentPane().add(lblGeneraciondePlanilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 11, -1, -1));
+
+        cmbxDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbxDepartamentoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmbxDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 123, 120, -1));
 
         lblDepartamento.setText("Departamento:");
+        getContentPane().add(lblDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 103, 104, -1));
 
         lblPuesto.setText("Puesto:");
+        getContentPane().add(lblPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 103, 104, -1));
+
+        getContentPane().add(cmbxPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 123, 120, -1));
 
         lblNombreEmpleado.setText("Nombre Empleado:");
+        getContentPane().add(lblNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 103, 104, -1));
 
-        lblApellidoEmpleado.setText("Apellido Empleado:");
+        cmbxNombreEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbxNombreEmpleadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmbxNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 123, 120, -1));
 
         lblSueldoBase.setText("Sueldo Base:");
+        getContentPane().add(lblSueldoBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
 
         txtSueldoBase.setEditable(false);
         txtSueldoBase.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -111,6 +187,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtSueldoBaseKeyReleased(evt);
             }
         });
+        getContentPane().add(txtSueldoBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 120, -1));
 
         txtComisiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,10 +202,13 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtComisionesKeyTyped(evt);
             }
         });
+        getContentPane().add(txtComisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 216, 120, -1));
 
         lblComisiones.setText("Comisiones:");
+        getContentPane().add(lblComisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 196, 104, -1));
 
         lblBonificacionesExtra.setText("Bonificaciones Extra:");
+        getContentPane().add(lblBonificacionesExtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 196, 104, -1));
 
         txtBonificacionesExtra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,8 +223,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtBonificacionesExtraKeyTyped(evt);
             }
         });
+        getContentPane().add(txtBonificacionesExtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 216, 120, -1));
 
         lblBonificacionIncentivo.setText("Bonificacion Incentivo:");
+        getContentPane().add(lblBonificacionIncentivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 196, -1, -1));
 
         txtBonificacionIncentivo.setEditable(false);
         txtBonificacionIncentivo.addActionListener(new java.awt.event.ActionListener() {
@@ -152,8 +234,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtBonificacionIncentivoActionPerformed(evt);
             }
         });
+        getContentPane().add(txtBonificacionIncentivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 216, 120, -1));
 
         lblSueldoDevengado.setText("Sueldo Devengado:");
+        getContentPane().add(lblSueldoDevengado, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 196, 104, -1));
 
         txtSueldoDevengado.setEditable(false);
         txtSueldoDevengado.addActionListener(new java.awt.event.ActionListener() {
@@ -161,8 +245,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtSueldoDevengadoActionPerformed(evt);
             }
         });
+        getContentPane().add(txtSueldoDevengado, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 216, 120, -1));
 
         lblIgss.setText("IGSS:");
+        getContentPane().add(lblIgss, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 312, 104, -1));
 
         txtIgss.setEditable(false);
         txtIgss.addActionListener(new java.awt.event.ActionListener() {
@@ -175,8 +261,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtIgssKeyReleased(evt);
             }
         });
+        getContentPane().add(txtIgss, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 332, 112, -1));
 
         lblIsr.setText("ISR:");
+        getContentPane().add(lblIsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 312, 104, -1));
 
         txtIsr.setEditable(false);
         txtIsr.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +277,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtIsrKeyReleased(evt);
             }
         });
+        getContentPane().add(txtIsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 332, 104, -1));
 
         txtAnticipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,10 +292,13 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtAnticiposKeyTyped(evt);
             }
         });
+        getContentPane().add(txtAnticipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 329, 120, -1));
 
         lblAnticipos.setText("Anticipos Concedidos:");
+        getContentPane().add(lblAnticipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 309, -1, -1));
 
         lblDescuentosJ.setText("Descuentos Judiciales:");
+        getContentPane().add(lblDescuentosJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 309, -1, -1));
 
         txtDescuentosJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,8 +313,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtDescuentosJKeyTyped(evt);
             }
         });
+        getContentPane().add(txtDescuentosJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 329, 120, -1));
 
         lblOtrosDescuentos.setText("Otros Descuentos:");
+        getContentPane().add(lblOtrosDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 309, 120, -1));
 
         txtOtrosDescuentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,26 +331,36 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtOtrosDescuentosKeyTyped(evt);
             }
         });
+        getContentPane().add(txtOtrosDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 329, 120, -1));
 
         lblCalculodeIngresos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblCalculodeIngresos.setText("Calculo de Ingresos");
+        getContentPane().add(lblCalculodeIngresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 161, -1, -1));
 
         lblCalculodeDescuentos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblCalculodeDescuentos.setText("Calculo de Descuentos");
+        getContentPane().add(lblCalculodeDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 277, -1, -1));
 
         lblTotalDescuentos.setText("Total Descuentos:");
+        getContentPane().add(lblTotalDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 379, -1, -1));
 
         txtTotalDescuentos.setEditable(false);
+        getContentPane().add(txtTotalDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 402, 120, -1));
 
         lblTotalDescuentos1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblTotalDescuentos1.setText("Sueldo Líquido:");
+        getContentPane().add(lblTotalDescuentos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 378, -1, -1));
 
         txtSueldoLiquido.setEditable(false);
         txtSueldoLiquido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(txtSueldoLiquido, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 399, 169, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 509, 1957, -1));
 
         lblFormadePago.setText("Forma de Pago:");
+        getContentPane().add(lblFormadePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 379, -1, -1));
 
         cmbxFormadePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Cheque" }));
+        getContentPane().add(cmbxFormadePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 402, 120, -1));
 
         TbPreNomina.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -276,231 +380,30 @@ public class Generación_Nomina extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TbPreNomina);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 522, 1937, 203));
+
         lblIngreseNum1.setText("Ingrese números");
+        getContentPane().add(lblIngreseNum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 242, 120, -1));
 
         lblIngreseNum2.setText("Ingrese números");
+        getContentPane().add(lblIngreseNum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 242, 120, -1));
 
         lblIngreseNum3.setText("Ingrese números");
+        getContentPane().add(lblIngreseNum3, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 358, -1, -1));
 
         lblIngreseNum4.setText("Ingrese números");
+        getContentPane().add(lblIngreseNum4, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 358, 120, -1));
 
         lblIngreseNum5.setText("Ingrese números");
+        getContentPane().add(lblIngreseNum5, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 358, 120, -1));
 
         jButton1.setText("Ingresar Empleado a Nómina");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 440, -1, 38));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("*Si el empleado no tiene algun ingreso o descuento, coloque un 0 en la casilla.");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(39, 39, 39)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(lblIngreseNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtComisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cmbxDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblComisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(lblCalculodeIngresos))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtTotalDescuentos, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblIngreseNum2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                            .addComponent(cmbxPuesto, javax.swing.GroupLayout.Alignment.LEADING, 0, 120, Short.MAX_VALUE)
-                                            .addComponent(lblPuesto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblTotalDescuentos, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblIngreseNum3)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(lblTotalDescuentos1, javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtSueldoLiquido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblFormadePago)
-                                                    .addComponent(cmbxFormadePago, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cmbxNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cmbxApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblSueldoBase)
-                                                    .addComponent(txtSueldoBase, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addComponent(lblCalculodeDescuentos)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(177, 177, 177)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblBonificacionesExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtBonificacionesExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(lblIgss, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(31, 31, 31)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                            .addComponent(txtIsr, javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(lblIsr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addComponent(txtIgss, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblBonificacionIncentivo)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(txtAnticipos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtBonificacionIncentivo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblAnticipos, javax.swing.GroupLayout.Alignment.LEADING))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(txtDescuentosJ, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(18, 18, 18)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(lblDescuentosJ)
-                                                            .addComponent(txtSueldoDevengado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(lblSueldoDevengado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(lblIngreseNum4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblIngreseNum5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lblOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addGap(1111, 1226, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(311, 311, 311)
-                                .addComponent(lblGeneraciondePlanilla))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblIngresodeDatos)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblGeneraciondePlanilla)
-                .addGap(27, 27, 27)
-                .addComponent(lblIngresodeDatos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDepartamento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbxDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblCalculodeIngresos)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblComisiones)
-                            .addComponent(lblBonificacionesExtra)
-                            .addComponent(lblBonificacionIncentivo)
-                            .addComponent(lblSueldoDevengado))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtComisiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBonificacionesExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBonificacionIncentivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSueldoDevengado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblIngreseNum1)
-                            .addComponent(lblIngreseNum2))
-                        .addGap(21, 21, 21)
-                        .addComponent(lblCalculodeDescuentos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPuesto)
-                            .addComponent(lblNombreEmpleado)
-                            .addComponent(lblApellidoEmpleado)
-                            .addComponent(lblSueldoBase))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbxPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbxNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbxApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSueldoBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAnticipos)
-                            .addComponent(lblDescuentosJ)
-                            .addComponent(lblOtrosDescuentos))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAnticipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDescuentosJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblIsr)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtIsr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblIgss)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtIgss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIngreseNum3)
-                    .addComponent(lblIngreseNum4)
-                    .addComponent(lblIngreseNum5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTotalDescuentos)
-                        .addGap(9, 9, 9)
-                        .addComponent(txtTotalDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTotalDescuentos1)
-                            .addComponent(lblFormadePago))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSueldoLiquido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbxFormadePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 83, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -989,6 +892,15 @@ String strIgss=txtIgss.getText();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_txtOtrosDescuentosKeyReleased
 
+    private void cmbxDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxDepartamentoActionPerformed
+
+    }//GEN-LAST:event_cmbxDepartamentoActionPerformed
+
+    private void cmbxNombreEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxNombreEmpleadoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cmbxNombreEmpleadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1027,17 +939,16 @@ String strIgss=txtIgss.getText();
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TbPreNomina;
-    private javax.swing.JComboBox<String> cmbxApellidoEmpleado;
     private javax.swing.JComboBox<String> cmbxDepartamento;
     private javax.swing.JComboBox<String> cmbxFormadePago;
     private javax.swing.JComboBox<String> cmbxNombreEmpleado;
     private javax.swing.JComboBox<String> cmbxPuesto;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAnticipos;
-    private javax.swing.JLabel lblApellidoEmpleado;
     private javax.swing.JLabel lblBonificacionIncentivo;
     private javax.swing.JLabel lblBonificacionesExtra;
     private javax.swing.JLabel lblCalculodeDescuentos;
