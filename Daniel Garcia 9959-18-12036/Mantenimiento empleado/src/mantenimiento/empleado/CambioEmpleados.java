@@ -5,6 +5,10 @@
  */
 package mantenimiento.empleado;
 
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Daniel Garcia
@@ -29,7 +33,7 @@ public class CambioEmpleados extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtcodigoemp = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -38,24 +42,24 @@ public class CambioEmpleados extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        txtnombre = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        txtapellido = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
+        txtpuesto = new javax.swing.JTextPane();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane5 = new javax.swing.JTextPane();
+        txtsueldo = new javax.swing.JTextPane();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextPane6 = new javax.swing.JTextPane();
+        txtubicacion = new javax.swing.JTextPane();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextPane7 = new javax.swing.JTextPane();
+        txtfechaini = new javax.swing.JTextPane();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextPane8 = new javax.swing.JTextPane();
+        txttelefono = new javax.swing.JTextPane();
         jLabel9 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextPane9 = new javax.swing.JTextPane();
+        txtingresondato = new javax.swing.JTextPane();
         jScrollPane10 = new javax.swing.JScrollPane();
         jTextPane10 = new javax.swing.JTextPane();
         jLabel11 = new javax.swing.JLabel();
@@ -78,14 +82,15 @@ public class CambioEmpleados extends javax.swing.JFrame {
         jScrollPane16 = new javax.swing.JScrollPane();
         jTextPane16 = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Ingrese Codigo Empleado");
         jLabel1.setName("lblingresocodigo"); // NOI18N
 
-        jTextPane1.setName("txtingresocodigo"); // NOI18N
-        jScrollPane1.setViewportView(jTextPane1);
+        txtcodigoemp.setName("txtingresocodigo"); // NOI18N
+        jScrollPane1.setViewportView(txtcodigoemp);
 
         jLabel2.setText("Nombre");
         jLabel2.setName("lblnombre"); // NOI18N
@@ -108,26 +113,26 @@ public class CambioEmpleados extends javax.swing.JFrame {
         jLabel8.setText("Telefono");
         jLabel8.setName("lbltelefono"); // NOI18N
 
-        jTextPane2.setName("txtnobmre"); // NOI18N
-        jScrollPane2.setViewportView(jTextPane2);
+        txtnombre.setName("txtnobmre"); // NOI18N
+        jScrollPane2.setViewportView(txtnombre);
 
-        jTextPane3.setName("txtapellido"); // NOI18N
-        jScrollPane3.setViewportView(jTextPane3);
+        txtapellido.setName("txtapellido"); // NOI18N
+        jScrollPane3.setViewportView(txtapellido);
 
-        jTextPane4.setName("txtpuesto"); // NOI18N
-        jScrollPane4.setViewportView(jTextPane4);
+        txtpuesto.setName("txtpuesto"); // NOI18N
+        jScrollPane4.setViewportView(txtpuesto);
 
-        jTextPane5.setName("txtsueldo"); // NOI18N
-        jScrollPane5.setViewportView(jTextPane5);
+        txtsueldo.setName("txtsueldo"); // NOI18N
+        jScrollPane5.setViewportView(txtsueldo);
 
-        jTextPane6.setName("txtubicacion"); // NOI18N
-        jScrollPane6.setViewportView(jTextPane6);
+        txtubicacion.setName("txtubicacion"); // NOI18N
+        jScrollPane6.setViewportView(txtubicacion);
 
-        jTextPane7.setName("txtfechaini"); // NOI18N
-        jScrollPane7.setViewportView(jTextPane7);
+        txtfechaini.setName("txtfechaini"); // NOI18N
+        jScrollPane7.setViewportView(txtfechaini);
 
-        jTextPane8.setName("txttelefono"); // NOI18N
-        jScrollPane8.setViewportView(jTextPane8);
+        txttelefono.setName("txttelefono"); // NOI18N
+        jScrollPane8.setViewportView(txttelefono);
 
         jLabel9.setText("Ingrese el dato a modificar");
         jLabel9.setName("lblingresomodificar"); // NOI18N
@@ -143,8 +148,8 @@ public class CambioEmpleados extends javax.swing.JFrame {
         jLabel10.setText("Ingrese el nuevo dato");
         jLabel10.setName("lblnuevodato"); // NOI18N
 
-        jTextPane9.setName("txtnuevodato"); // NOI18N
-        jScrollPane9.setViewportView(jTextPane9);
+        txtingresondato.setName("txtnuevodato"); // NOI18N
+        jScrollPane9.setViewportView(txtingresondato);
 
         jTextPane10.setName("txtapellido"); // NOI18N
         jScrollPane10.setViewportView(jTextPane10);
@@ -196,6 +201,14 @@ public class CambioEmpleados extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.setName("btncodigoemp"); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -216,6 +229,8 @@ public class CambioEmpleados extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(0, 0, 0)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(jButton2)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,17 +291,18 @@ public class CambioEmpleados extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(597, 597, 597)))
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -347,6 +363,27 @@ public class CambioEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    String codigo = txtcodigoemp.getText().trim();
+     if(codigo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
+        try {
+            AccesoAleatorio.crearFileEmpleado( new File("empleado.txt") );
+            int i = AccesoAleatorio.buscarRegistro( codigo );
+            if(i==-1) {
+                JOptionPane.showMessageDialog(this, "Ningún registro coincide con los datos de búsqueda.", "Advertencia", JOptionPane.WARNING_MESSAGE);             
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: "+AccesoAleatorio.getEmpleado(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            AccesoAleatorio.cerrar();
+        } catch(IOException e) {
+            JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -384,6 +421,7 @@ public class CambioEmpleados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -418,7 +456,6 @@ public class CambioEmpleados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane10;
     private javax.swing.JTextPane jTextPane11;
     private javax.swing.JTextPane jTextPane12;
@@ -426,13 +463,14 @@ public class CambioEmpleados extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane14;
     private javax.swing.JTextPane jTextPane15;
     private javax.swing.JTextPane jTextPane16;
-    private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane3;
-    private javax.swing.JTextPane jTextPane4;
-    private javax.swing.JTextPane jTextPane5;
-    private javax.swing.JTextPane jTextPane6;
-    private javax.swing.JTextPane jTextPane7;
-    private javax.swing.JTextPane jTextPane8;
-    private javax.swing.JTextPane jTextPane9;
+    private javax.swing.JTextPane txtapellido;
+    private javax.swing.JTextPane txtcodigoemp;
+    private javax.swing.JTextPane txtfechaini;
+    private javax.swing.JTextPane txtingresondato;
+    private javax.swing.JTextPane txtnombre;
+    private javax.swing.JTextPane txtpuesto;
+    private javax.swing.JTextPane txtsueldo;
+    private javax.swing.JTextPane txttelefono;
+    private javax.swing.JTextPane txtubicacion;
     // End of variables declaration//GEN-END:variables
 }
