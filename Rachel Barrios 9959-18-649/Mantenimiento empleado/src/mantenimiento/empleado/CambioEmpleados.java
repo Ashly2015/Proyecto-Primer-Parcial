@@ -5,6 +5,10 @@
  */
 package mantenimiento.empleado;
 
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Daniel Garcia
@@ -29,7 +33,7 @@ public class CambioEmpleados extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtcodigoemp = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -38,54 +42,55 @@ public class CambioEmpleados extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        txtnombre = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        txtapellido = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
+        txtpuesto = new javax.swing.JTextPane();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane5 = new javax.swing.JTextPane();
+        txtsueldo = new javax.swing.JTextPane();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextPane6 = new javax.swing.JTextPane();
+        txtubicacion = new javax.swing.JTextPane();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextPane7 = new javax.swing.JTextPane();
+        txtfechaini = new javax.swing.JTextPane();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextPane8 = new javax.swing.JTextPane();
+        txttelefono = new javax.swing.JTextPane();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbdatosmodif = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextPane9 = new javax.swing.JTextPane();
+        txtingresondato = new javax.swing.JTextPane();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTextPane10 = new javax.swing.JTextPane();
+        txtapellido2 = new javax.swing.JTextPane();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTextPane11 = new javax.swing.JTextPane();
+        txtpuesto2 = new javax.swing.JTextPane();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTextPane12 = new javax.swing.JTextPane();
+        txtsueldo2 = new javax.swing.JTextPane();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        jTextPane13 = new javax.swing.JTextPane();
+        txtubicacion2 = new javax.swing.JTextPane();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane14 = new javax.swing.JScrollPane();
-        jTextPane14 = new javax.swing.JTextPane();
+        txtfechaini2 = new javax.swing.JTextPane();
         jScrollPane15 = new javax.swing.JScrollPane();
-        jTextPane15 = new javax.swing.JTextPane();
+        txtnombre2 = new javax.swing.JTextPane();
         jScrollPane16 = new javax.swing.JScrollPane();
-        jTextPane16 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        txttelefono2 = new javax.swing.JTextPane();
+        btnguardar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Ingrese Codigo Empleado");
         jLabel1.setName("lblingresocodigo"); // NOI18N
 
-        jTextPane1.setName("txtingresocodigo"); // NOI18N
-        jScrollPane1.setViewportView(jTextPane1);
+        txtcodigoemp.setName("txtingresocodigo"); // NOI18N
+        jScrollPane1.setViewportView(txtcodigoemp);
 
         jLabel2.setText("Nombre");
         jLabel2.setName("lblnombre"); // NOI18N
@@ -108,46 +113,46 @@ public class CambioEmpleados extends javax.swing.JFrame {
         jLabel8.setText("Telefono");
         jLabel8.setName("lbltelefono"); // NOI18N
 
-        jTextPane2.setName("txtnobmre"); // NOI18N
-        jScrollPane2.setViewportView(jTextPane2);
+        txtnombre.setName("txtnobmre"); // NOI18N
+        jScrollPane2.setViewportView(txtnombre);
 
-        jTextPane3.setName("txtapellido"); // NOI18N
-        jScrollPane3.setViewportView(jTextPane3);
+        txtapellido.setName("txtapellido"); // NOI18N
+        jScrollPane3.setViewportView(txtapellido);
 
-        jTextPane4.setName("txtpuesto"); // NOI18N
-        jScrollPane4.setViewportView(jTextPane4);
+        txtpuesto.setName("txtpuesto"); // NOI18N
+        jScrollPane4.setViewportView(txtpuesto);
 
-        jTextPane5.setName("txtsueldo"); // NOI18N
-        jScrollPane5.setViewportView(jTextPane5);
+        txtsueldo.setName("txtsueldo"); // NOI18N
+        jScrollPane5.setViewportView(txtsueldo);
 
-        jTextPane6.setName("txtubicacion"); // NOI18N
-        jScrollPane6.setViewportView(jTextPane6);
+        txtubicacion.setName("txtubicacion"); // NOI18N
+        jScrollPane6.setViewportView(txtubicacion);
 
-        jTextPane7.setName("txtfechaini"); // NOI18N
-        jScrollPane7.setViewportView(jTextPane7);
+        txtfechaini.setName("txtfechaini"); // NOI18N
+        jScrollPane7.setViewportView(txtfechaini);
 
-        jTextPane8.setName("txttelefono"); // NOI18N
-        jScrollPane8.setViewportView(jTextPane8);
+        txttelefono.setName("txttelefono"); // NOI18N
+        jScrollPane8.setViewportView(txttelefono);
 
         jLabel9.setText("Ingrese el dato a modificar");
         jLabel9.setName("lblingresomodificar"); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setName("cboseleccion"); // NOI18N
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cmbdatosmodif.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "           ", "Nombre", "Apellido", "Puesto", "Sueldo", "Fecha Inicio", "Ubicacion", "Telefono" }));
+        cmbdatosmodif.setName("cboseleccion"); // NOI18N
+        cmbdatosmodif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cmbdatosmodifActionPerformed(evt);
             }
         });
 
         jLabel10.setText("Ingrese el nuevo dato");
         jLabel10.setName("lblnuevodato"); // NOI18N
 
-        jTextPane9.setName("txtnuevodato"); // NOI18N
-        jScrollPane9.setViewportView(jTextPane9);
+        txtingresondato.setName("txtnuevodato"); // NOI18N
+        jScrollPane9.setViewportView(txtingresondato);
 
-        jTextPane10.setName("txtapellido"); // NOI18N
-        jScrollPane10.setViewportView(jTextPane10);
+        txtapellido2.setName("txtapellido"); // NOI18N
+        jScrollPane10.setViewportView(txtapellido2);
 
         jLabel11.setText("Nombre");
         jLabel11.setName("lblnnombre"); // NOI18N
@@ -155,8 +160,8 @@ public class CambioEmpleados extends javax.swing.JFrame {
         jLabel12.setText("Puesto");
         jLabel12.setName("lblpuesto"); // NOI18N
 
-        jTextPane11.setName("txtpuesto"); // NOI18N
-        jScrollPane11.setViewportView(jTextPane11);
+        txtpuesto2.setName("txtpuesto"); // NOI18N
+        jScrollPane11.setViewportView(txtpuesto2);
 
         jLabel13.setText("Apellido");
         jLabel13.setName("lblapellido"); // NOI18N
@@ -164,8 +169,8 @@ public class CambioEmpleados extends javax.swing.JFrame {
         jLabel14.setText("Sueldo");
         jLabel14.setName("lblsueldo"); // NOI18N
 
-        jTextPane12.setName("txtsueldo"); // NOI18N
-        jScrollPane12.setViewportView(jTextPane12);
+        txtsueldo2.setName("txtsueldo"); // NOI18N
+        jScrollPane12.setViewportView(txtsueldo2);
 
         jLabel15.setText("Fecha Inicio");
         jLabel15.setName("lblfechaini"); // NOI18N
@@ -173,26 +178,34 @@ public class CambioEmpleados extends javax.swing.JFrame {
         jLabel16.setText("Ubicacion");
         jLabel16.setName("lblubicacion"); // NOI18N
 
-        jTextPane13.setName("txtubicacion"); // NOI18N
-        jScrollPane13.setViewportView(jTextPane13);
+        txtubicacion2.setName("txtubicacion"); // NOI18N
+        jScrollPane13.setViewportView(txtubicacion2);
 
         jLabel17.setText("Telefono");
         jLabel17.setName("lbltelefono"); // NOI18N
 
-        jTextPane14.setName("txtfechaini"); // NOI18N
-        jScrollPane14.setViewportView(jTextPane14);
+        txtfechaini2.setName("txtfechaini"); // NOI18N
+        jScrollPane14.setViewportView(txtfechaini2);
 
-        jTextPane15.setName("txtnnobmre"); // NOI18N
-        jScrollPane15.setViewportView(jTextPane15);
+        txtnombre2.setName("txtnnobmre"); // NOI18N
+        jScrollPane15.setViewportView(txtnombre2);
 
-        jTextPane16.setName("txttelefono"); // NOI18N
-        jScrollPane16.setViewportView(jTextPane16);
+        txttelefono2.setName("txttelefono"); // NOI18N
+        jScrollPane16.setViewportView(txttelefono2);
 
-        jButton1.setText("Guardar");
-        jButton1.setName("btnguardar"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnguardar.setText("Guardar");
+        btnguardar.setName("btnguardar"); // NOI18N
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnguardarActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.setName("btncodigoemp"); // NOI18N
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -208,15 +221,10 @@ public class CambioEmpleados extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(jButton1)
+                        .addComponent(btnguardar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, 0)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,19 +282,29 @@ public class CambioEmpleados extends javax.swing.JFrame {
                                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(597, 597, 597)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(0, 0, 0)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(btnBuscar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmbdatosmodif, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -308,13 +326,13 @@ public class CambioEmpleados extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbdatosmodif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel10)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
+                    .addComponent(btnguardar))
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -339,13 +357,35 @@ public class CambioEmpleados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+       
+    }//GEN-LAST:event_btnguardarActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmbdatosmodifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbdatosmodifActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmbdatosmodifActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+    String codigo = txtcodigoemp.getText().trim();
+    String nombre;
+     if(codigo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
+        try {
+            AccesoAleatorio.crearFileEmpleado( new File("empleado.txt") );
+            int i = AccesoAleatorio.buscarRegistro( codigo );
+            if(i==-1) {
+                JOptionPane.showMessageDialog(this, "Ningún registro coincide con los datos de búsqueda.", "Advertencia", JOptionPane.WARNING_MESSAGE);             
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: "+AccesoAleatorio.getEmpleado(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            AccesoAleatorio.cerrar();
+        } catch(IOException e) {
+            JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,8 +423,9 @@ public class CambioEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnguardar;
+    private javax.swing.JComboBox<String> cmbdatosmodif;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -418,21 +459,21 @@ public class CambioEmpleados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane10;
-    private javax.swing.JTextPane jTextPane11;
-    private javax.swing.JTextPane jTextPane12;
-    private javax.swing.JTextPane jTextPane13;
-    private javax.swing.JTextPane jTextPane14;
-    private javax.swing.JTextPane jTextPane15;
-    private javax.swing.JTextPane jTextPane16;
-    private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane3;
-    private javax.swing.JTextPane jTextPane4;
-    private javax.swing.JTextPane jTextPane5;
-    private javax.swing.JTextPane jTextPane6;
-    private javax.swing.JTextPane jTextPane7;
-    private javax.swing.JTextPane jTextPane8;
-    private javax.swing.JTextPane jTextPane9;
+    private javax.swing.JTextPane txtapellido;
+    private javax.swing.JTextPane txtapellido2;
+    private javax.swing.JTextPane txtcodigoemp;
+    private javax.swing.JTextPane txtfechaini;
+    private javax.swing.JTextPane txtfechaini2;
+    private javax.swing.JTextPane txtingresondato;
+    private javax.swing.JTextPane txtnombre;
+    private javax.swing.JTextPane txtnombre2;
+    private javax.swing.JTextPane txtpuesto;
+    private javax.swing.JTextPane txtpuesto2;
+    private javax.swing.JTextPane txtsueldo;
+    private javax.swing.JTextPane txtsueldo2;
+    private javax.swing.JTextPane txttelefono;
+    private javax.swing.JTextPane txttelefono2;
+    private javax.swing.JTextPane txtubicacion;
+    private javax.swing.JTextPane txtubicacion2;
     // End of variables declaration//GEN-END:variables
 }
