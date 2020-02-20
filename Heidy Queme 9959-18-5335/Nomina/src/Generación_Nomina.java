@@ -32,7 +32,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum3.setVisible(false);
         lblIngreseNum4.setVisible(false);
         lblIngreseNum5.setVisible(false);
-        txtBonificacionIncentivo.setText("250.00"); txtSueldoBase.setText("6000.00");
+        txtBonificacionIncentivo.setText("250.00");
         DecimalFormat formato1 = new DecimalFormat("#.00");
         
         
@@ -78,6 +78,31 @@ public class Generación_Nomina extends javax.swing.JFrame {
             i=i++;
            } 
             
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
+        //SUELDOS
+        
+        String datox="";
+        String nombre="";
+         try {
+            fr = new FileReader("Sueldos.txt");
+            BufferedReader bf=new BufferedReader(fr);
+           for(int i=0;i<registros;i++){
+            datox= bf.readLine();
+            String partes[]=datox.split(" ");
+
+                for(int j=0;j<1;j++){               
+                nombre=partes[0]+" "+partes[1];
+                
+                j++;
+                if((String)cmbxNombreEmpleado.getSelectedItem()==(nombre)){
+                    txtSueldoBase.setText(partes[2]);
+                }
+            
+            i++;
+            }
+            }
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
         }
@@ -898,8 +923,31 @@ String strIgss=txtIgss.getText();
 
     private void cmbxNombreEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxNombreEmpleadoActionPerformed
         // TODO add your handling code here:
+        int registros=1000;
+        String partes[]=new String[3];
+        String dato=null;
+        String nombre=null;
+        FileReader fr; 
+        try {
+            fr = new FileReader("Puestos.txt");
+            BufferedReader bf=new BufferedReader(fr);
+           for(int i=0;i<registros;i++){
+            String datoe= bf.readLine();
+            cmbxPuesto.addItem(datoe);
+            i=i++;
+           } 
+            
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
         
+
+       
     }//GEN-LAST:event_cmbxNombreEmpleadoActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
 
     /**
      * @param args the command line arguments
