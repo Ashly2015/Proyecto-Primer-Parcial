@@ -35,6 +35,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum3.setVisible(false);
         lblIngreseNum4.setVisible(false);
         lblIngreseNum5.setVisible(false);
+        advertencia.setVisible(false);
         txtBonificacionIncentivo.setText("250.00");txtIsr.setText("0");
         DecimalFormat formato1 = new DecimalFormat("#.00");
         
@@ -145,6 +146,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Limpiar = new javax.swing.JButton();
+        advertencia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generación de Nómina");
@@ -431,7 +433,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 IngresarEmpleadoActionPerformed(evt);
             }
         });
-        getContentPane().add(IngresarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 170, 38));
+        getContentPane().add(IngresarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 230, 38));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("*Si el empleado no tiene algun ingreso o descuento, coloque un 0 en la casilla.");
@@ -444,7 +446,11 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 LimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 440, 180, 38));
+        getContentPane().add(Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 440, 110, 38));
+
+        advertencia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        advertencia.setText("ADVERTENCIA: No todos los campos están llenos");
+        getContentPane().add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 270, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1012,8 +1018,11 @@ String strIgss=txtIgss.getText();
 
     private void IngresarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarEmpleadoActionPerformed
         // TODO add your handling code here:
-        String departamento, puesto, nombre, sueldo, comisiones, bonificacionesextra, incentivo, sueldodevengado="";
-        String igss, isr, anticipos, descuentosj, otrosdescuentos, totaldescuentos, liquido, formapago="";
+       
+        String departamento="", puesto="", nombre="", sueldo="", comisiones="", bonificacionesextra="", incentivo="", sueldodevengado="";
+        String igss="", isr="", anticipos="", descuentosj="", otrosdescuentos="", totaldescuentos="", liquido="", formapago="";
+        if(sueldo!=""&&comisiones!=""&&bonificacionesextra!=""&&anticipos!=""&&descuentosj!=""&&totaldescuentos!=""){
+        advertencia.setVisible(false);
         departamento=(String)cmbxDepartamento.getSelectedItem();
         puesto=(String)cmbxPuesto.getSelectedItem();
         nombre=(String)cmbxNombreEmpleado.getSelectedItem();
@@ -1053,6 +1062,9 @@ String strIgss=txtIgss.getText();
               
            }
         }
+       } else{
+           advertencia.setVisible(true);
+       }
     
     }//GEN-LAST:event_IngresarEmpleadoActionPerformed
 
@@ -1121,6 +1133,7 @@ String strIgss=txtIgss.getText();
     private javax.swing.JButton IngresarEmpleado;
     private javax.swing.JButton Limpiar;
     private javax.swing.JTable TbPreNomina;
+    private javax.swing.JLabel advertencia;
     private javax.swing.JComboBox<String> cmbxDepartamento;
     private javax.swing.JComboBox<String> cmbxFormadePago;
     private javax.swing.JComboBox<String> cmbxNombreEmpleado;
