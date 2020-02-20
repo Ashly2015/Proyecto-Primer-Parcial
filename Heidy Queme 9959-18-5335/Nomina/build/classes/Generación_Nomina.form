@@ -617,13 +617,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblIngreseNum3">
+    <Component class="javax.swing.JLabel" name="lblIngreseNum">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingrese n&#xfa;meros"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="313" y="358" width="-1" height="-1"/>
+          <AbsoluteConstraints x="460" y="150" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -703,6 +703,16 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="160" y="480" width="270" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIngreseNum6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ingrese n&#xfa;meros"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="313" y="358" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

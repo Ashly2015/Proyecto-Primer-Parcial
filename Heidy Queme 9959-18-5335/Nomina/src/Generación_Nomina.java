@@ -30,9 +30,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
     AccesoAleatorioN aleatorio=new AccesoAleatorioN();
     public Generación_Nomina() {
         initComponents();
+        lblIngreseNum.setVisible(false);
         lblIngreseNum1.setVisible(false);
         lblIngreseNum2.setVisible(false);
-        lblIngreseNum3.setVisible(false);
+        lblIngreseNum.setVisible(false);
         lblIngreseNum4.setVisible(false);
         lblIngreseNum5.setVisible(false);
         advertencia.setVisible(false);
@@ -139,7 +140,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
         TbPreNomina = new javax.swing.JTable();
         lblIngreseNum1 = new javax.swing.JLabel();
         lblIngreseNum2 = new javax.swing.JLabel();
-        lblIngreseNum3 = new javax.swing.JLabel();
+        lblIngreseNum = new javax.swing.JLabel();
         lblIngreseNum4 = new javax.swing.JLabel();
         lblIngreseNum5 = new javax.swing.JLabel();
         IngresarEmpleado = new javax.swing.JButton();
@@ -147,6 +148,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Limpiar = new javax.swing.JButton();
         advertencia = new javax.swing.JLabel();
+        lblIngreseNum6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generación de Nómina");
@@ -418,8 +420,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum2.setText("Ingrese números");
         getContentPane().add(lblIngreseNum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 242, 120, -1));
 
-        lblIngreseNum3.setText("Ingrese números");
-        getContentPane().add(lblIngreseNum3, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 358, -1, -1));
+        lblIngreseNum.setText("Ingrese números");
+        getContentPane().add(lblIngreseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
 
         lblIngreseNum4.setText("Ingrese números");
         getContentPane().add(lblIngreseNum4, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 358, 120, -1));
@@ -451,6 +453,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
         advertencia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         advertencia.setText("ADVERTENCIA: No todos los campos están llenos");
         getContentPane().add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 270, -1));
+
+        lblIngreseNum6.setText("Ingrese números");
+        getContentPane().add(lblIngreseNum6, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 358, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -523,10 +528,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
         if(Character.isLetter(validar)){
             getToolkit().beep();
             evt.consume();
-            lblIngreseNum3.setVisible(true);
+            lblIngreseNum.setVisible(true);
         }
         else{
-            lblIngreseNum3.setVisible(false);
+            lblIngreseNum.setVisible(false);
         }
     }//GEN-LAST:event_txtAnticiposKeyTyped
 
@@ -976,6 +981,15 @@ String strIgss=txtIgss.getText();
 
     private void txtSueldoBaseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldoBaseKeyTyped
         // TODO add your handling code here:
+                char validar=evt.getKeyChar();
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+            lblIngreseNum.setVisible(true);
+        }
+        else{
+            lblIngreseNum.setVisible(false);
+        }
 
     }//GEN-LAST:event_txtSueldoBaseKeyTyped
 
@@ -1153,11 +1167,12 @@ String strIgss=txtIgss.getText();
     private javax.swing.JLabel lblFormadePago;
     private javax.swing.JLabel lblGeneraciondePlanilla;
     private javax.swing.JLabel lblIgss;
+    private javax.swing.JLabel lblIngreseNum;
     private javax.swing.JLabel lblIngreseNum1;
     private javax.swing.JLabel lblIngreseNum2;
-    private javax.swing.JLabel lblIngreseNum3;
     private javax.swing.JLabel lblIngreseNum4;
     private javax.swing.JLabel lblIngreseNum5;
+    private javax.swing.JLabel lblIngreseNum6;
     private javax.swing.JLabel lblIngresodeDatos;
     private javax.swing.JLabel lblIsr;
     private javax.swing.JLabel lblNombreEmpleado;
