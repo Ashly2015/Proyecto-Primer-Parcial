@@ -181,41 +181,41 @@ public class Puesto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBuscarPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPuestoActionPerformed
-String puesto = txtBuscaPuesto.getText().trim();
-        if(puesto.isEmpty()) {
+        String puesto = txtBuscaPuesto.getText().trim();
+        if (puesto.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del puesto!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
-        } 
+        }
         try {
-            AccesoAleatorio.crearFilePuesto( new File("puesto.txt") );
-            int i = AccesoAleatorio.buscarRegistroPuesto( puesto );
-            if(i==-1) {
-                JOptionPane.showMessageDialog(this, "Ningún registro coincide con los datos de búsqueda.", "Advertencia", JOptionPane.WARNING_MESSAGE);             
+            AccesoAleatorio.crearFilePuesto(new File("puesto.txt"));
+            int i = AccesoAleatorio.buscarRegistroPuesto(puesto);
+            if (i == -1) {
+                JOptionPane.showMessageDialog(this, "Ningún registro coincide con los datos de búsqueda.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: "+AccesoAleatorio.getPuestos(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: " + AccesoAleatorio.getPuestos(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
             AccesoAleatorio.cerrar();
-        } catch(IOException e) {
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros.", "Error", JOptionPane.ERROR_MESSAGE);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarPuestoActionPerformed
 
     private void btnCrearPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPuestoActionPerformed
-String puesto = txtCrearPuesto.getText().trim();
+        String puesto = txtCrearPuesto.getText().trim();
 
         if (puesto.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del puesto!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
-        }  
+        }
         String id = txtCrearId.getText().trim();
 
         if (id.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del puesto!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
-        }  
+        }
         try {
-            AccesoAleatorio.crearFilePuesto( new File("puesto.txt") );
-            AccesoAleatorio.añadirPuesto( new MantenimientoPuesto(id,puesto,true) );
+            AccesoAleatorio.crearFilePuesto(new File("puesto.txt"));
+            AccesoAleatorio.añadirPuesto(new MantenimientoPuesto(id, puesto, true));
             AccesoAleatorio.cerrar();
             JOptionPane.showMessageDialog(this, "El registro se realizó correctamente.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
@@ -225,11 +225,13 @@ String puesto = txtCrearPuesto.getText().trim();
     }//GEN-LAST:event_btnCrearPuestoActionPerformed
 
     private void btnEliminarPuesto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPuesto1ActionPerformed
-try {
+        try {
             AccesoAleatorio.crearFilePuesto(new File("puesto.txt"));
-            if( AccesoAleatorio.eliminarPuesto(txtEliminarPuesto.getText()) )
+            if (AccesoAleatorio.eliminarPuesto(txtEliminarPuesto.getText())) {
                 JOptionPane.showMessageDialog(this, "El registro correspondiente fue eliminado correctamente.", "Eliminación correcta", JOptionPane.INFORMATION_MESSAGE);
-            else JOptionPane.showMessageDialog(this, "Error al intentar eliminar un registro inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al intentar eliminar un registro inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error en la eliminación de registros.", "Error", JOptionPane.ERROR_MESSAGE);
         }          // TODO add your handling code here:

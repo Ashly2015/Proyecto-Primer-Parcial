@@ -1,4 +1,5 @@
 package mantenimiento.empleado;
+
 import java.io.Serializable;
 
 /**
@@ -16,7 +17,6 @@ public class MantenimientoEmpleado implements Serializable {
     private float sueldo;
     private boolean activo;
     private String id;
-   
 
     public MantenimientoEmpleado() {
         nombre = "NN";
@@ -29,16 +29,14 @@ public class MantenimientoEmpleado implements Serializable {
         ubicacion = "NN";
         telefono = 0;
         sueldo = 0;
-        id="NN";
+        id = "NN";
 
         activo = true;
     }
-  
-    
-    
 
-    public MantenimientoEmpleado(String idEmpleado,String nombre, String apellido, String departamento, String puesto, int dia, int mes, int año, int telefono, String ubicacion, float sueldo, boolean activo) {
-        this.id=idEmpleado;
+//Constructor que recibe todos los datos de altas empleados
+    public MantenimientoEmpleado(String idEmpleado, String nombre, String apellido, String departamento, String puesto, int dia, int mes, int año, int telefono, String ubicacion, float sueldo, boolean activo) {
+        this.id = idEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;
         this.departamento = departamento;
@@ -51,17 +49,23 @@ public class MantenimientoEmpleado implements Serializable {
         this.sueldo = sueldo;
         this.activo = activo;
     }
+//Constructor
 
-    public MantenimientoEmpleado(String id,String departamento, boolean activo) {
-        this.id=id;
+    public MantenimientoEmpleado(String id, String departamento, boolean activo) {
+        this.id = id;
         this.departamento = departamento;
         this.activo = activo;
     }
 
-    
+    public MantenimientoEmpleado(String id, int dia, int mes, int año, boolean activo) {
+        this.dia = dia;
+        this.mes = mes;
+        this.año = año;
+        this.activo = activo;
+        this.id = id;
+    }
 
-    
-
+//    Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -158,18 +162,11 @@ public class MantenimientoEmpleado implements Serializable {
         this.id = id;
     }
 
-    
-
-    
-    
-
     @Override
     public String toString() {
-        
-        
-        
+
         return "\nId: " + id
-                +"\nNombre: " + nombre
+                + "\nNombre: " + nombre
                 + "\nApellido: " + apellido
                 + "\nDepartamento: " + departamento
                 + "\nPuesto: " + puesto
@@ -179,13 +176,9 @@ public class MantenimientoEmpleado implements Serializable {
                 + "\nSueldo: " + sueldo;
 
     }
-    
-    
 
     public int getTamaño() {
-        return getNombre().length() * 2 + 2 + 4 + 1;
+        return getId().length() * 2 + 2 + 4 + 1;
     }
-    
-    
 
 }

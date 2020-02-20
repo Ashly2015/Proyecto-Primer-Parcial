@@ -20,7 +20,7 @@ public class Departamento extends javax.swing.JFrame {
      */
     public Departamento() {
         initComponents();
-        
+
     }
 
     /**
@@ -178,8 +178,7 @@ public class Departamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearDepartamentoActionPerformed
-String id = txtCrearId.getText().trim();
-
+        String id = txtCrearId.getText().trim();
 
         if (id.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del departamento!", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -187,18 +186,19 @@ String id = txtCrearId.getText().trim();
         }
         String departamento = txtCrearDepartamento.getText().trim();
 
-
         if (departamento.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del departamento!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         try {
-            AccesoAleatorio.crearFileDepartamento( new File("departamento.txt") );
-            
-            AccesoAleatorio.añadirDepartamento( new  MantenimientoDepartamento(id,departamento,true) );
+            AccesoAleatorio.crearFileDepartamento(new File("departamento.txt"));
+
+            AccesoAleatorio.añadirDepartamento(new MantenimientoDepartamento(id, departamento, true));
+
             AccesoAleatorio.cerrar();
             JOptionPane.showMessageDialog(this, "El registro se realizó correctamente.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error en la escritura de datos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -206,36 +206,38 @@ String id = txtCrearId.getText().trim();
     }//GEN-LAST:event_btnCrearDepartamentoActionPerformed
 
     private void btnBuscarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDepartamentoActionPerformed
- 
+
         String departamento = txtBuscarDepartamento.getText().trim();
-        if(departamento.isEmpty()) {
+        if (departamento.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del departamento!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
-        } 
+        }
         try {
-            AccesoAleatorio.crearFileDepartamento( new File("departamento.txt") );
-            int i = AccesoAleatorio.buscarRegistroDepto( departamento );
-            if(i==-1) {
-                JOptionPane.showMessageDialog(this, "Ningún registro coincide con los datos de búsqueda.", "Advertencia", JOptionPane.WARNING_MESSAGE);             
+            AccesoAleatorio.crearFileDepartamento(new File("departamento.txt"));
+            int i = AccesoAleatorio.buscarRegistroDepto(departamento);
+            if (i == -1) {
+                JOptionPane.showMessageDialog(this, "Ningún registro coincide con los datos de búsqueda.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: "+AccesoAleatorio.getDepartamentos(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: " + AccesoAleatorio.getDepartamentos(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
             AccesoAleatorio.cerrar();
-        } catch(IOException e) {
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarDepartamentoActionPerformed
 
     private void btnEliminarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDepartamentoActionPerformed
- try {
+        try {
             AccesoAleatorio.crearFileDepartamento(new File("departamento.txt"));
-            if( AccesoAleatorio.eliminarDepartamento(txtEliminarDepartamento.getText()) )
+            if (AccesoAleatorio.eliminarDepartamento(txtEliminarDepartamento.getText())) {
                 JOptionPane.showMessageDialog(this, "El registro correspondiente fue eliminado correctamente.", "Eliminación correcta", JOptionPane.INFORMATION_MESSAGE);
-            else JOptionPane.showMessageDialog(this, "Error al intentar eliminar un registro inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al intentar eliminar un registro inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error en la eliminación de registros.", "Error", JOptionPane.ERROR_MESSAGE);
-        }  
+        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarDepartamentoActionPerformed

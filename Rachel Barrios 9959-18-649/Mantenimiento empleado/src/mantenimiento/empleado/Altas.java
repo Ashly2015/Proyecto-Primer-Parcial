@@ -5,8 +5,14 @@
  */
 package mantenimiento.empleado;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +26,10 @@ public class Altas extends javax.swing.JFrame {
      */
     public Altas() {
         initComponents();
+    
+        
+        
+        
     }
 
     /**
@@ -59,6 +69,7 @@ public class Altas extends javax.swing.JFrame {
         label12 = new java.awt.Label();
         label13 = new java.awt.Label();
         txtNombre = new java.awt.TextField();
+        btnBajas = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -93,7 +104,7 @@ public class Altas extends javax.swing.JFrame {
 
         label11.setText("Sueldo");
 
-        cmbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Direccion General", "Almacen", "Logistica", "Produccion", "Marketing", "Otro..." }));
+        cmbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Marketing", "Publicidad", "Limpieza", " " }));
 
         cmbPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Gerente general", "Supervisor" }));
 
@@ -141,6 +152,14 @@ public class Altas extends javax.swing.JFrame {
 
         label13.setText("Nombre");
 
+        btnBajas.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        btnBajas.setText("BAJAS");
+        btnBajas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,7 +185,8 @@ public class Altas extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(btnNuevoDepartamento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnNuevoPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(btnNuevoPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnBajas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -265,7 +285,9 @@ public class Altas extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
-                .addGap(29, 29, 29))
+                .addGap(18, 18, 18)
+                .addComponent(btnBajas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9))
         );
 
         pack();
@@ -400,10 +422,15 @@ verDepartamento.setVisible(true);
     }//GEN-LAST:event_btnNuevoDepartamento1ActionPerformed
 
     private void btnNuevoPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPuestoActionPerformed
-     Puesto verPuesto=new Puesto();     
-verPuesto.setVisible(true);
+  
+
 // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoPuestoActionPerformed
+
+    private void btnBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajasActionPerformed
+      Bajas verBajas=new Bajas();     
+verBajas.setVisible(true);    // TODO add your handling code here:
+    }//GEN-LAST:event_btnBajasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,6 +468,7 @@ verPuesto.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBajas;
     private javax.swing.JButton btnNuevoDepartamento1;
     private javax.swing.JButton btnNuevoPuesto;
     private javax.swing.JComboBox<String> cmbAño;

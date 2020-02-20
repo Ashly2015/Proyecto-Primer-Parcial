@@ -398,6 +398,11 @@ public class Generación_Nomina extends javax.swing.JFrame {
         getContentPane().add(lblIngreseNum5, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 358, 120, -1));
 
         jButton1.setText("Ingresar Empleado a Nómina");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 440, -1, 38));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -900,6 +905,10 @@ String strIgss=txtIgss.getText();
         // TODO add your handling code here:
         
     }//GEN-LAST:event_cmbxNombreEmpleadoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

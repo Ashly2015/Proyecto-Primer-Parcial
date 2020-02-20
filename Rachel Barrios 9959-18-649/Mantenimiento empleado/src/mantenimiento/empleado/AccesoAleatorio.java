@@ -19,6 +19,7 @@ public class AccesoAleatorio {
     private static int numeroRegistros, numeroRegistrosDepto;
     private static int tamañoRegistro = 80;
 
+//Crear los file para cada archivo que se necesite
     public static void crearFileEmpleado(File archivo) throws IOException {
         if (archivo.exists() && !archivo.isFile()) {
             throw new IOException(archivo.getName() + " no es un archivo");
@@ -27,11 +28,16 @@ public class AccesoAleatorio {
         numeroRegistros = (int) Math.ceil(
                 (double) flujo.length() / (double) tamañoRegistro);
     }
-    
-    public static void cerrar() throws IOException {
-        flujo.close();
+
+    public static void crearFileBajas(File archivo) throws IOException {
+        if (archivo.exists() && !archivo.isFile()) {
+            throw new IOException(archivo.getName() + " no es un archivo");
+        }
+        flujo = new RandomAccessFile(archivo, "rw");
+        numeroRegistros = (int) Math.ceil(
+                (double) flujo.length() / (double) tamañoRegistro);
     }
-    
+
     public static void crearFileDepartamento(File archivo) throws IOException {
         if (archivo.exists() && !archivo.isFile()) {
             throw new IOException(archivo.getName() + " no es un archivo");
@@ -40,7 +46,7 @@ public class AccesoAleatorio {
         numeroRegistrosDepto = (int) Math.ceil(
                 (double) flujo.length() / (double) tamañoRegistro);
     }
-    
+
     public static void crearFilePuesto(File archivo) throws IOException {
         if (archivo.exists() && !archivo.isFile()) {
             throw new IOException(archivo.getName() + " no es un archivo");
@@ -49,13 +55,19 @@ public class AccesoAleatorio {
         numeroRegistros = (int) Math.ceil(
                 (double) flujo.length() / (double) tamañoRegistro);
     }
-    
-     public static boolean setMantenimientoEmpleado(int i, MantenimientoEmpleado empleado) throws IOException {
-        if(i >= 0 && i <= getNumeroRegistros()) {
-            if(empleado.getTamaño() > tamañoRegistro) {
+
+    //    Cierra el flujo
+    public static void cerrar() throws IOException {
+        flujo.close();
+    }
+
+
+    public static boolean setMantenimientoEmpleado(int i, MantenimientoEmpleado empleado) throws IOException {
+        if (i >= 0 && i <= getNumeroRegistros()) {
+            if (empleado.getTamaño() > tamañoRegistro) {
                 System.out.println("\nTamaño de registro excedido.");
             } else {
-                flujo.seek(i*tamañoRegistro);
+                flujo.seek(i * tamañoRegistro);
                 flujo.writeUTF(empleado.getId());
                 flujo.writeUTF(empleado.getNombre());
                 flujo.writeUTF(empleado.getApellido());
@@ -75,14 +87,34 @@ public class AccesoAleatorio {
         }
         return false;
     }
-     
-     
-     public static boolean setDepartamento(int i, MantenimientoDepartamento departamento) throws IOException {
-        if(i >= 0 && i <= getNumeroRegistrosDepto()) {
-            if(departamento.getTamañoDepto() > tamañoRegistro) {
+
+    public static boolean setMantenimientoBajas(int i, MantenimientoEmpleado empleado) throws IOException {
+        if (i >= 0 && i <= getNumeroRegistros()) {
+            if (empleado.getTamaño() > tamañoRegistro) {
                 System.out.println("\nTamaño de registro excedido.");
             } else {
-                flujo.seek(i*tamañoRegistro);
+                flujo.seek(i * tamañoRegistro);
+                flujo.writeUTF(empleado.getId());
+
+                flujo.writeInt(empleado.getDia());
+                flujo.writeInt(empleado.getMes());
+                flujo.writeInt(empleado.getAño());
+
+                flujo.writeBoolean(empleado.isActivo());
+                return true;
+            }
+        } else {
+            System.out.println("\nNúmero de registro fuera de límites.");
+        }
+        return false;
+    }
+
+    public static boolean setDepartamento(int i, MantenimientoDepartamento departamento) throws IOException {
+        if (i >= 0 && i <= getNumeroRegistrosDepto()) {
+            if (departamento.getTamañoDepto() > tamañoRegistro) {
+                System.out.println("\nTamaño de registro excedido.");
+            } else {
+                flujo.seek(i * tamañoRegistro);
                 flujo.writeUTF(departamento.getId());
                 flujo.writeUTF(departamento.getDepartamento());
                 flujo.writeBoolean(departamento.isActivo());
@@ -93,13 +125,13 @@ public class AccesoAleatorio {
         }
         return false;
     }
-     
-     public static boolean setPuesto(int i, MantenimientoPuesto puesto) throws IOException {
-        if(i >= 0 && i <= getNumeroRegistros()) {
-            if(puesto.getTamañoPuesto() > tamañoRegistro) {
+
+    public static boolean setPuesto(int i, MantenimientoPuesto puesto) throws IOException {
+        if (i >= 0 && i <= getNumeroRegistros()) {
+            if (puesto.getTamañoPuesto() > tamañoRegistro) {
                 System.out.println("\nTamaño de registro excedido.");
             } else {
-                flujo.seek(i*tamañoRegistro);
+                flujo.seek(i * tamañoRegistro);
                 flujo.writeUTF(puesto.getId());
                 flujo.writeUTF(puesto.getPuesto());
                 flujo.writeBoolean(puesto.isActivo());
@@ -110,173 +142,196 @@ public class AccesoAleatorio {
         }
         return false;
     }
-     
-     private static int buscarRegistroInactivo() throws IOException {
+
+    private static int buscarRegistroInactivo() throws IOException {
         String nombre;
-        for(int i=0; i<getNumeroRegistros(); i++) 
-        {
+        for (int i = 0; i < getNumeroRegistros(); i++) {
             flujo.seek(i * tamañoRegistro);
-            if(!getEmpleado(i).isActivo()) 
+            if (!getEmpleado(i).isActivo()) {
                 return i;
+            }
         }
-        return -1;        
+        return -1;
     }
-     
-       private static int buscarRegistroInactivoDepto() throws IOException {
+
+    private static int buscarRegistroInactivoDepto() throws IOException {
         String nombre;
-        for(int i=0; i<getNumeroRegistrosDepto(); i++) 
-        {
+        for (int i = 0; i < getNumeroRegistrosDepto(); i++) {
             flujo.seek(i * tamañoRegistro);
-            if(!getDepartamentos(i).isActivo()) 
+            if (!getDepartamentos(i).isActivo()) {
                 return i;
+            }
         }
-        return -1;        
+        return -1;
     }
-       
-          private static int buscarRegistroInactivoPuesto() throws IOException {
+
+    private static int buscarRegistroInactivoPuesto() throws IOException {
         String nombre;
-        for(int i=0; i<getNumeroRegistros(); i++) 
-        {
+        for (int i = 0; i < getNumeroRegistros(); i++) {
             flujo.seek(i * tamañoRegistro);
-            if(!getPuestos(i).isActivo()) 
+            if (!getPuestos(i).isActivo()) {
                 return i;
+            }
         }
-        return -1;        
+        return -1;
     }
-     
-     public static boolean eliminarEmpleado(String aEliminar) throws IOException {
+
+    public static boolean eliminarEmpleado(String aEliminar) throws IOException {
         int pos = buscarRegistro(aEliminar);
-        if(pos == -1) return false;
+        if (pos == -1) {
+            return false;
+        }
         MantenimientoEmpleado personaEliminada = getEmpleado(pos);
         personaEliminada.setActivo(false);
         setMantenimientoEmpleado(pos, personaEliminada);
         return true;
     }
-     
-     public static boolean eliminarDepartamento(String aEliminar) throws IOException {
+
+    public static boolean eliminarDepartamento(String aEliminar) throws IOException {
         int pos = buscarRegistroDepto(aEliminar);
-        if(pos == -1) return false;
+        if (pos == -1) {
+            return false;
+        }
         MantenimientoDepartamento departamentoEliminada = getDepartamentos(pos);
         departamentoEliminada.setActivo(false);
         setDepartamento(pos, departamentoEliminada);
         return true;
     }
-     
-      public static boolean eliminarPuesto(String aEliminar) throws IOException {
+
+    public static boolean eliminarPuesto(String aEliminar) throws IOException {
         int pos = buscarRegistroPuesto(aEliminar);
-        if(pos == -1) return false;
+        if (pos == -1) {
+            return false;
+        }
         MantenimientoPuesto puestoEliminada = getPuestos(pos);
         puestoEliminada.setActivo(false);
         setPuesto(pos, puestoEliminada);
         return true;
     }
-    
+
     public static void compactarArchivo(File archivo) throws IOException {
         crearFileEmpleado(archivo); // Abrimos el flujo.
         MantenimientoEmpleado[] listado = new MantenimientoEmpleado[numeroRegistros];
-        for(int i=0; i<numeroRegistros; ++i)
+        for (int i = 0; i < numeroRegistros; ++i) {
             listado[i] = getEmpleado(i);
+        }
         cerrar(); // Cerramos el flujo.
         archivo.delete(); // Borramos el archivo.
 
         File tempo = new File("temporal.txt");
         crearFileEmpleado(tempo); // Como no existe se crea.
-        for(MantenimientoEmpleado p : listado)
-            if(p.isActivo())
+        for (MantenimientoEmpleado p : listado) {
+            if (p.isActivo()) {
                 añadirPersona(p);
+            }
+        }
         cerrar();
-        
+
         tempo.renameTo(archivo); // Renombramos.
     }
-    
+
     public static void compactarArchivoDepto(File archivo) throws IOException {
         crearFileDepartamento(archivo); // Abrimos el flujo.
-         MantenimientoDepartamento[] listado = new  MantenimientoDepartamento[numeroRegistrosDepto];
-        for(int i=0; i<numeroRegistrosDepto; ++i)
+        MantenimientoDepartamento[] listado = new MantenimientoDepartamento[numeroRegistrosDepto];
+        for (int i = 0; i < numeroRegistrosDepto; ++i) {
             listado[i] = getDepartamentos(i);
+        }
         cerrar(); // Cerramos el flujo.
         archivo.delete(); // Borramos el archivo.
 
         File tempo = new File("temporalDepto.txt");
         crearFileDepartamento(tempo); // Como no existe se crea.
-        for( MantenimientoDepartamento p : listado)
-            if(p.isActivo())
+        for (MantenimientoDepartamento p : listado) {
+            if (p.isActivo()) {
                 añadirDepartamento(p);
+            }
+        }
         cerrar();
-        
+
         tempo.renameTo(archivo); // Renombramos.
     }
-    
-     public static void compactarArchivoPuesto(File archivo) throws IOException {
+
+    public static void compactarArchivoPuesto(File archivo) throws IOException {
         crearFilePuesto(archivo); // Abrimos el flujo.
-         MantenimientoPuesto[] listado = new  MantenimientoPuesto[numeroRegistros];
-        for(int i=0; i<numeroRegistros; ++i)
+        MantenimientoPuesto[] listado = new MantenimientoPuesto[numeroRegistros];
+        for (int i = 0; i < numeroRegistros; ++i) {
             listado[i] = getPuestos(i);
+        }
         cerrar(); // Cerramos el flujo.
         archivo.delete(); // Borramos el archivo.
 
         File tempo = new File("temporalDepto.txt");
         crearFileDepartamento(tempo); // Como no existe se crea.
-        for( MantenimientoPuesto p : listado)
-            if(p.isActivo())
+        for (MantenimientoPuesto p : listado) {
+            if (p.isActivo()) {
                 añadirPuesto(p);
+            }
+        }
         cerrar();
-        
+
         tempo.renameTo(archivo); // Renombramos.
     }
-    
-    
-    
+
     public static void añadirPersona(MantenimientoEmpleado persona) throws IOException {
         int inactivo = buscarRegistroInactivo();
-        if(setMantenimientoEmpleado(inactivo==-1?numeroRegistros:inactivo, persona)) 
-            numeroRegistros++;        
+        if (setMantenimientoEmpleado(inactivo == -1 ? numeroRegistros : inactivo, persona)) {
+            numeroRegistros++;
+        }
     }
-    
-     public static void añadirDepartamento( MantenimientoDepartamento departamento) throws IOException {
+
+    public static void añadirBajas(MantenimientoEmpleado persona) throws IOException {
+        int inactivo = buscarRegistroInactivo();
+        if (setMantenimientoBajas(inactivo == -1 ? numeroRegistros : inactivo, persona)) {
+            numeroRegistros++;
+        }
+    }
+
+    public static void añadirDepartamento(MantenimientoDepartamento departamento) throws IOException {
         int inactivo = buscarRegistroInactivoDepto();
-        if(setDepartamento(inactivo==-1?numeroRegistrosDepto:inactivo, departamento)) 
-            numeroRegistrosDepto++;        
+        if (setDepartamento(inactivo == -1 ? numeroRegistrosDepto : inactivo, departamento)) {
+            numeroRegistrosDepto++;
+        }
     }
-     
-      public static void añadirPuesto( MantenimientoPuesto puesto) throws IOException {
+
+    public static void añadirPuesto(MantenimientoPuesto puesto) throws IOException {
         int inactivo = buscarRegistroInactivoPuesto();
-        if(setPuesto(inactivo==-1?numeroRegistros:inactivo, puesto)) 
-            numeroRegistros++;        
+        if (setPuesto(inactivo == -1 ? numeroRegistros : inactivo, puesto)) {
+            numeroRegistros++;
+        }
     }
 
     public static int getNumeroRegistros() {
         return numeroRegistros;
     }
-    
+
     public static int getNumeroRegistrosDepto() {
         return numeroRegistrosDepto;
     }
 
     public static MantenimientoEmpleado getEmpleado(int i) throws IOException {
-        if(i >= 0 && i <= getNumeroRegistros()) {
+        if (i >= 0 && i <= getNumeroRegistros()) {
             flujo.seek(i * tamañoRegistro);
-            return new MantenimientoEmpleado(flujo.readUTF(),flujo.readUTF(),flujo.readUTF(),flujo.readUTF(),flujo.readUTF(), flujo.readInt(),flujo.readInt(),flujo.readInt(),flujo.readInt(),flujo.readUTF(),flujo.readFloat(), flujo.readBoolean());
+            return new MantenimientoEmpleado(flujo.readUTF(), flujo.readUTF(), flujo.readUTF(), flujo.readUTF(), flujo.readUTF(), flujo.readInt(), flujo.readInt(), flujo.readInt(), flujo.readInt(), flujo.readUTF(), flujo.readFloat(), flujo.readBoolean());
         } else {
             System.out.println("\nNúmero de registro fuera de límites.");
             return null;
         }
     }
-    
-     public static  MantenimientoDepartamento getDepartamentos(int i) throws IOException {
-        if(i >= 0 && i <= getNumeroRegistrosDepto()) {
+
+    public static MantenimientoDepartamento getDepartamentos(int i) throws IOException {
+        if (i >= 0 && i <= getNumeroRegistrosDepto()) {
             flujo.seek(i * tamañoRegistro);
-            return new  MantenimientoDepartamento(flujo.readUTF(),flujo.readUTF(), flujo.readBoolean());
+            return new MantenimientoDepartamento(flujo.readUTF(), flujo.readUTF(), flujo.readBoolean());
         } else {
             System.out.println("\nNúmero de registro fuera de límites.");
             return null;
         }
     }
-     
-     public static  MantenimientoPuesto getPuestos(int i) throws IOException {
-        if(i >= 0 && i <= getNumeroRegistros()) {
+
+    public static MantenimientoPuesto getPuestos(int i) throws IOException {
+        if (i >= 0 && i <= getNumeroRegistros()) {
             flujo.seek(i * tamañoRegistro);
-            return new  MantenimientoPuesto(flujo.readUTF(),flujo.readUTF(), flujo.readBoolean());
+            return new MantenimientoPuesto(flujo.readUTF(), flujo.readUTF(), flujo.readBoolean());
         } else {
             System.out.println("\nNúmero de registro fuera de límites.");
             return null;
@@ -288,44 +343,44 @@ public class AccesoAleatorio {
         if (buscado == null) {
             return -1;
         }
-        for(int i=0; i<getNumeroRegistros(); i++) {
+        for (int i = 0; i < getNumeroRegistros(); i++) {
             flujo.seek(i * tamañoRegistro);
             p = getEmpleado(i);
-            if(p.getNombre().equals(buscado) && p.isActivo()) {
+            if (p.getId().equals(buscado) && p.isActivo()) {
                 return i;
             }
         }
         return -1;
     }
-    
+
     public static int buscarRegistroDepto(String buscado) throws IOException {
-         MantenimientoDepartamento p;
+        MantenimientoDepartamento p;
         if (buscado == null) {
             return -1;
         }
-        for(int i=0; i<getNumeroRegistrosDepto(); i++) {
+        for (int i = 0; i < getNumeroRegistrosDepto(); i++) {
             flujo.seek(i * tamañoRegistro);
             p = getDepartamentos(i);
-            if(p.getDepartamento().equals(buscado) && p.isActivo()) {
+            if (p.getDepartamento().equals(buscado) && p.isActivo()) {
                 return i;
             }
         }
         return -1;
     }
-    
+
     public static int buscarRegistroPuesto(String buscado) throws IOException {
-         MantenimientoPuesto p;
+        MantenimientoPuesto p;
         if (buscado == null) {
             return -1;
         }
-        for(int i=0; i<getNumeroRegistros(); i++) {
+        for (int i = 0; i < getNumeroRegistros(); i++) {
             flujo.seek(i * tamañoRegistro);
             p = getPuestos(i);
-            if(p.getPuesto().equals(buscado) && p.isActivo()) {
+            if (p.getPuesto().equals(buscado) && p.isActivo()) {
                 return i;
             }
         }
         return -1;
     }
-    
+
 }

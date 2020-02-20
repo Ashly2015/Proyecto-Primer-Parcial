@@ -11,30 +11,34 @@ import java.io.Serializable;
  *
  * @author ranbr
  */
-public class MantenimientoDepartamento implements Serializable{
+public class MantenimientoDepartamento implements Serializable {
 
     private String departamento;
     private boolean activo;
     private String id;
-   
 
     public MantenimientoDepartamento() {
-        
+
         departamento = "NN";
-        id="NN";
+        id = "NN";
 
         activo = true;
     }
-  
-    
 
-    public MantenimientoDepartamento(String id,String departamento, boolean activo) {
-        this.id=id;
+//Constructor
+    public MantenimientoDepartamento(String id, String departamento, boolean activo) {
+        this.id = id;
+        this.departamento = departamento;
+        this.activo = activo;
+    }
+//Constructor
+
+    MantenimientoDepartamento(String departamento, boolean b) {
         this.departamento = departamento;
         this.activo = activo;
     }
 
-  
+//  Getters y Setters
     public String getDepartamento() {
         return departamento;
     }
@@ -42,7 +46,6 @@ public class MantenimientoDepartamento implements Serializable{
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
-
 
     public boolean isActivo() {
         return activo;
@@ -60,25 +63,18 @@ public class MantenimientoDepartamento implements Serializable{
         this.id = id;
     }
 
-   
-    
-
+//Sobrecarga de metodo sobre el padre 
     @Override
     public String toString() {
-        
-        
-        
+
+//        Impresion de registro
         return "\nId: " + id
                 + "\nDepartamento: " + departamento;
-             
 
     }
-    
-    
+
     public int getTamañoDepto() {
         return getDepartamento().length() * 2 + 2 + 4 + 1;
     }
-    
-    
-    
+
 }
