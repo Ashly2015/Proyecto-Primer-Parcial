@@ -7,12 +7,11 @@ package mantenimiento.empleado;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Daniel Garcia
- */
+
 public class CambioEmpleados extends javax.swing.JFrame {
 
     /**
@@ -32,8 +31,6 @@ public class CambioEmpleados extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtcodigoemp = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -83,14 +80,13 @@ public class CambioEmpleados extends javax.swing.JFrame {
         txttelefono2 = new javax.swing.JTextPane();
         btnguardar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        txtcodigoemp = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Ingrese Codigo Empleado");
         jLabel1.setName("lblingresocodigo"); // NOI18N
-
-        txtcodigoemp.setName("txtingresocodigo"); // NOI18N
-        jScrollPane1.setViewportView(txtcodigoemp);
 
         jLabel2.setText("Nombre");
         jLabel2.setName("lblnombre"); // NOI18N
@@ -209,6 +205,8 @@ public class CambioEmpleados extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane17.setViewportView(txtcodigoemp);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -285,9 +283,9 @@ public class CambioEmpleados extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1)
-                                        .addGap(0, 0, 0)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(136, 136, 136)
                                         .addComponent(btnBuscar))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel9)
@@ -301,10 +299,9 @@ public class CambioEmpleados extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnBuscar))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -367,9 +364,8 @@ public class CambioEmpleados extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
     String codigo = txtcodigoemp.getText().trim();
-    String nombre;
-     if(codigo.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre de la persona!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        if(codigo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el codigo correctamente!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         } 
         try {
@@ -384,7 +380,6 @@ public class CambioEmpleados extends javax.swing.JFrame {
         } catch(IOException e) {
             JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
@@ -443,7 +438,6 @@ public class CambioEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
@@ -451,6 +445,7 @@ public class CambioEmpleados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
