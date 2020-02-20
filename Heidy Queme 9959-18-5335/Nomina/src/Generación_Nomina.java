@@ -12,9 +12,12 @@ import java.util.logging.Logger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author zuzu-ai
@@ -27,12 +30,14 @@ public class Generación_Nomina extends javax.swing.JFrame {
     AccesoAleatorioN aleatorio=new AccesoAleatorioN();
     public Generación_Nomina() {
         initComponents();
+        lblIngreseNum.setVisible(false);
         lblIngreseNum1.setVisible(false);
         lblIngreseNum2.setVisible(false);
-        lblIngreseNum3.setVisible(false);
+        lblIngreseNum.setVisible(false);
         lblIngreseNum4.setVisible(false);
         lblIngreseNum5.setVisible(false);
-        txtBonificacionIncentivo.setText("250.00"); txtSueldoBase.setText("6000.00");
+        advertencia.setVisible(false);
+        txtBonificacionIncentivo.setText("250.00");txtIsr.setText("0");
         DecimalFormat formato1 = new DecimalFormat("#.00");
         
         
@@ -81,6 +86,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
         }
+
+        
     }
 
     /**
@@ -133,12 +140,15 @@ public class Generación_Nomina extends javax.swing.JFrame {
         TbPreNomina = new javax.swing.JTable();
         lblIngreseNum1 = new javax.swing.JLabel();
         lblIngreseNum2 = new javax.swing.JLabel();
-        lblIngreseNum3 = new javax.swing.JLabel();
+        lblIngreseNum = new javax.swing.JLabel();
         lblIngreseNum4 = new javax.swing.JLabel();
         lblIngreseNum5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        IngresarEmpleado = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        Limpiar = new javax.swing.JButton();
+        advertencia = new javax.swing.JLabel();
+        lblIngreseNum6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generación de Nómina");
@@ -176,15 +186,37 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 cmbxNombreEmpleadoActionPerformed(evt);
             }
         });
+        cmbxNombreEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbxNombreEmpleadoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cmbxNombreEmpleadoKeyReleased(evt);
+            }
+        });
         getContentPane().add(cmbxNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 123, 120, -1));
 
         lblSueldoBase.setText("Sueldo Base:");
         getContentPane().add(lblSueldoBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
 
-        txtSueldoBase.setEditable(false);
+        txtSueldoBase.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtSueldoBaseInputMethodTextChanged(evt);
+            }
+        });
+        txtSueldoBase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSueldoBaseActionPerformed(evt);
+            }
+        });
         txtSueldoBase.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSueldoBaseKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSueldoBaseKeyTyped(evt);
             }
         });
         getContentPane().add(txtSueldoBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 120, -1));
@@ -388,8 +420,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum2.setText("Ingrese números");
         getContentPane().add(lblIngreseNum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 242, 120, -1));
 
-        lblIngreseNum3.setText("Ingrese números");
-        getContentPane().add(lblIngreseNum3, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 358, -1, -1));
+        lblIngreseNum.setText("Ingrese números");
+        getContentPane().add(lblIngreseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
 
         lblIngreseNum4.setText("Ingrese números");
         getContentPane().add(lblIngreseNum4, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 358, 120, -1));
@@ -397,6 +429,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum5.setText("Ingrese números");
         getContentPane().add(lblIngreseNum5, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 358, 120, -1));
 
+<<<<<<< HEAD
         jButton1.setText("Ingresar Empleado a Nómina");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -404,11 +437,35 @@ public class Generación_Nomina extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 440, -1, 38));
+=======
+        IngresarEmpleado.setText("Ingresar Empleado a Nómina");
+        IngresarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IngresarEmpleadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(IngresarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 230, 38));
+>>>>>>> ec622d97e2f8ce9abe9435f69056df2363731a15
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("*Si el empleado no tiene algun ingreso o descuento, coloque un 0 en la casilla.");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 83, -1, -1));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, -1, -1));
+
+        Limpiar.setText("Limpiar");
+        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 440, 110, 38));
+
+        advertencia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        advertencia.setText("ADVERTENCIA: No todos los campos están llenos");
+        getContentPane().add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 270, -1));
+
+        lblIngreseNum6.setText("Ingrese números");
+        getContentPane().add(lblIngreseNum6, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 358, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -481,10 +538,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
         if(Character.isLetter(validar)){
             getToolkit().beep();
             evt.consume();
-            lblIngreseNum3.setVisible(true);
+            lblIngreseNum.setVisible(true);
         }
         else{
-            lblIngreseNum3.setVisible(false);
+            lblIngreseNum.setVisible(false);
         }
     }//GEN-LAST:event_txtAnticiposKeyTyped
 
@@ -552,6 +609,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
        double dbIsr;
        if(dbSueldoBase<6000){
            dbIsr=0;
+           txtIsr.setText("0");
        }
        else{
            //CALCULO TOTAL INGRESOS
@@ -573,6 +631,7 @@ public class Generación_Nomina extends javax.swing.JFrame {
            //IMPRESION EN PANTALLA
            txtIsr.setText(strIsr);
        }
+       
         }
     }//GEN-LAST:event_txtSueldoBaseKeyReleased
 
@@ -903,12 +962,166 @@ String strIgss=txtIgss.getText();
 
     private void cmbxNombreEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxNombreEmpleadoActionPerformed
         // TODO add your handling code here:
+        int registros=1000;
+        String partes[]=new String[3];
+        String dato=null;
+        String nombre=null;
+        FileReader fr; 
+        try {
+            fr = new FileReader("Puestos.txt");
+            BufferedReader bf=new BufferedReader(fr);
+           for(int i=0;i<registros;i++){
+            String datoe= bf.readLine();
+            cmbxPuesto.addItem(datoe);
+            i=i++;
+           } 
+            
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
         
+
+       
     }//GEN-LAST:event_cmbxNombreEmpleadoActionPerformed
 
+<<<<<<< HEAD
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+=======
+    private void cmbxNombreEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbxNombreEmpleadoKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cmbxNombreEmpleadoKeyReleased
+
+    private void txtSueldoBaseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldoBaseKeyTyped
+        // TODO add your handling code here:
+                char validar=evt.getKeyChar();
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+            lblIngreseNum.setVisible(true);
+        }
+        else{
+            lblIngreseNum.setVisible(false);
+        }
+
+    }//GEN-LAST:event_txtSueldoBaseKeyTyped
+
+    private void txtSueldoBaseInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtSueldoBaseInputMethodTextChanged
+      // TODO add your handling code here:
+    }//GEN-LAST:event_txtSueldoBaseInputMethodTextChanged
+
+    private void cmbxNombreEmpleadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbxNombreEmpleadoKeyPressed
+        // TODO add your handling code here:
+                FileReader fr;
+        int registros=1000; 
+        String nombrecombo="";
+        nombrecombo=(String)cmbxNombreEmpleado.getSelectedItem();
+       
+         try {
+            fr = new FileReader("Sueldos.txt");
+            BufferedReader bf=new BufferedReader(fr);
+           for(int i=0;i<registros;i++){
+            String datox= bf.readLine();
+            String partes[]=datox.split(" ");
+            
+
+                for(int j=0;j<1;j++){               
+                String nombresueldo=partes[0]+" "+partes[1];
+                
+                
+                if(nombresueldo==nombrecombo){
+                    txtSueldoBase.setText(partes[2]);
+                }
+            j++;
+            
+            }
+               
+            i++;
+           }
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }  
+    }//GEN-LAST:event_cmbxNombreEmpleadoKeyPressed
+
+    private void IngresarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarEmpleadoActionPerformed
+        // TODO add your handling code here:
+       
+        String departamento="", puesto="", nombre="", sueldo="", comisiones="", bonificacionesextra="", incentivo="", sueldodevengado="";
+        String igss="", isr="", anticipos="", descuentosj="", otrosdescuentos="", totaldescuentos="", liquido="", formapago="";
+        if(sueldo!=""&&comisiones!=""&&bonificacionesextra!=""&&anticipos!=""&&descuentosj!=""&&totaldescuentos!=""){
+        advertencia.setVisible(false);
+        departamento=(String)cmbxDepartamento.getSelectedItem();
+        puesto=(String)cmbxPuesto.getSelectedItem();
+        nombre=(String)cmbxNombreEmpleado.getSelectedItem();
+        sueldo=txtSueldoBase.getText();
+        comisiones=txtComisiones.getText();
+        bonificacionesextra=txtBonificacionesExtra.getText();
+        incentivo=txtBonificacionIncentivo.getText();
+        sueldodevengado=txtSueldoDevengado.getText();
+        igss=txtIgss.getText();
+        isr=txtIsr.getText();
+        anticipos=txtAnticipos.getText();
+        descuentosj=txtDescuentosJ.getText();
+        otrosdescuentos=txtOtrosDescuentos.getText();
+        totaldescuentos=txtTotalDescuentos.getText();
+        liquido=txtSueldoLiquido.getText();
+        formapago=(String)cmbxFormadePago.getSelectedItem();
+        
+        FileWriter escritura = null;
+        PrintWriter pw = null;
+        try
+        {
+            escritura = new FileWriter("Nomina.txt");
+            pw = new PrintWriter(escritura);
+
+            for (int i = 0; i < 10; i++)
+                pw.println(departamento+" "+puesto+" "+nombre+" "+sueldo+" "+comisiones+" "+bonificacionesextra+" "+incentivo+" "+sueldodevengado+" "+igss+" "+isr+" "+anticipos+" "+descuentosj+" "+otrosdescuentos+" "+totaldescuentos+" "+liquido+" "+formapago);
+
+        } catch (Exception e) {
+            
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != escritura)
+              escritura.close();
+           } catch (Exception e2) {
+              
+           }
+        }
+       } else{
+           advertencia.setVisible(true);
+       }
+    
+    }//GEN-LAST:event_IngresarEmpleadoActionPerformed
+
+    private void txtSueldoBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSueldoBaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSueldoBaseActionPerformed
+
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        // TODO add your handling code here:
+        txtSueldoBase.setText("");
+        txtComisiones.setText("");
+        txtBonificacionesExtra.setText("");
+        txtSueldoDevengado.setText("");
+        
+        txtIgss.setText("");
+        txtIsr.setText("0");
+        txtAnticipos.setText("");
+        txtDescuentosJ.setText("");
+        txtOtrosDescuentos.setText("");
+        txtTotalDescuentos.setText("");
+        txtSueldoLiquido.setText("");
+        
+    }//GEN-LAST:event_LimpiarActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+>>>>>>> ec622d97e2f8ce9abe9435f69056df2363731a15
 
     /**
      * @param args the command line arguments
@@ -947,12 +1160,14 @@ String strIgss=txtIgss.getText();
         });
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton IngresarEmpleado;
+    private javax.swing.JButton Limpiar;
     private javax.swing.JTable TbPreNomina;
+    private javax.swing.JLabel advertencia;
     private javax.swing.JComboBox<String> cmbxDepartamento;
     private javax.swing.JComboBox<String> cmbxFormadePago;
     private javax.swing.JComboBox<String> cmbxNombreEmpleado;
     private javax.swing.JComboBox<String> cmbxPuesto;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -968,11 +1183,12 @@ String strIgss=txtIgss.getText();
     private javax.swing.JLabel lblFormadePago;
     private javax.swing.JLabel lblGeneraciondePlanilla;
     private javax.swing.JLabel lblIgss;
+    private javax.swing.JLabel lblIngreseNum;
     private javax.swing.JLabel lblIngreseNum1;
     private javax.swing.JLabel lblIngreseNum2;
-    private javax.swing.JLabel lblIngreseNum3;
     private javax.swing.JLabel lblIngreseNum4;
     private javax.swing.JLabel lblIngreseNum5;
+    private javax.swing.JLabel lblIngreseNum6;
     private javax.swing.JLabel lblIngresodeDatos;
     private javax.swing.JLabel lblIsr;
     private javax.swing.JLabel lblNombreEmpleado;

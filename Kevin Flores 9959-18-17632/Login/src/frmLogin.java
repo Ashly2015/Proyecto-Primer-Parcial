@@ -21,22 +21,24 @@ import sun.security.util.Password;
  *
  * @author kievk
  */
-public class login extends javax.swing.JFrame {
+public class frmLogin extends javax.swing.JFrame {
 
 private static Scanner sc;
 private static int Intentos;
-private static String strUsuario, strContraseña;
+private static String strUsuario, strContraseña; 
 
-
+    public static void setIntentos(int Intentos) {
+        frmLogin.Intentos = Intentos;
+    }
     /**
      * Creates new form login
      */
-    public login() {
+    public frmLogin() {
         initComponents();
        setLocationRelativeTo(null);
        setSize(1000,800);
        setDefaultCloseOperation(EXIT_ON_CLOSE);
-       
+       rootPane.setDefaultButton(btnIniciarSesion);
     }
 
     /**
@@ -228,7 +230,7 @@ private static String strUsuario, strContraseña;
                 while ((Linea=br.readLine())!=null)
                     nLineas++;
             } catch (IOException ex) {
-                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
         //tamaño del array
             Usuario=new String [nLineas];
@@ -245,12 +247,12 @@ private static String strUsuario, strContraseña;
             s.ValidarUsuarios(Usuario, strUsuario, strContraseña, Intentos);
                 
     } catch (FileNotFoundException ex) {
-        Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
     } finally {
         try {
             fr.close();
         } catch (IOException ex) {
-            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }   
         
@@ -267,6 +269,7 @@ private static String strUsuario, strContraseña;
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+         System.exit(0);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
@@ -288,13 +291,13 @@ private static String strUsuario, strContraseña;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -302,7 +305,7 @@ private static String strUsuario, strContraseña;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new login().setVisible(true);
+                new frmLogin().setVisible(true);
             }
         });
     }
