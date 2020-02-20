@@ -439,15 +439,6 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum5.setText("Ingrese números");
         getContentPane().add(lblIngreseNum5, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 358, 120, -1));
 
-<<<<<<< HEAD
-        jButton1.setText("Ingresar Empleado a Nómina");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 440, -1, 38));
-=======
         IngresarEmpleado.setText("Ingresar Empleado a Nómina");
         IngresarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -455,7 +446,6 @@ public class Generación_Nomina extends javax.swing.JFrame {
             }
         });
         getContentPane().add(IngresarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 230, 38));
->>>>>>> ec622d97e2f8ce9abe9435f69056df2363731a15
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("*Si el empleado no tiene algun ingreso o descuento, coloque un 0 en la casilla.");
@@ -1031,11 +1021,6 @@ String strIgss=txtIgss.getText();
        
     }//GEN-LAST:event_cmbxNombreEmpleadoActionPerformed
 
-<<<<<<< HEAD
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-=======
     private void cmbxNombreEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbxNombreEmpleadoKeyReleased
         // TODO add your handling code here:
         
@@ -1178,7 +1163,6 @@ String strIgss=txtIgss.getText();
     /**
      * @param args the command line arguments
      */
->>>>>>> ec622d97e2f8ce9abe9435f69056df2363731a15
 
     /**
      * @param args the command line arguments
