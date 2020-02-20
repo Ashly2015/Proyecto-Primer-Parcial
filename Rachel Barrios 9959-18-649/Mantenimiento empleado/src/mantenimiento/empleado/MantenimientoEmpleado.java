@@ -33,9 +33,12 @@ public class MantenimientoEmpleado implements Serializable {
 
         activo = true;
     }
+  
+    
     
 
     public MantenimientoEmpleado(int idEmpleado,String nombre, String apellido, String departamento, String puesto, int dia, int mes, int año, int telefono, String ubicacion, float sueldo, boolean activo) {
+        this.id=idEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;
         this.departamento = departamento;
@@ -157,6 +160,9 @@ public class MantenimientoEmpleado implements Serializable {
 
     @Override
     public String toString() {
+        
+        
+        
         return "\nId: " + id
                 +"\nNombre: " + nombre
                 + "\nApellido: " + apellido
@@ -168,13 +174,11 @@ public class MantenimientoEmpleado implements Serializable {
                 + "\nSueldo: " + sueldo;
 
     }
+    
+    
 
     public int getTamaño() {
         return getNombre().length() * 2 + 2 + 4 + 1;
-    }
-    
-    public int getTamañoDepto() {
-        return getDepartamento().length() * 2 + 2 + 4 + 1;
     }
     
     

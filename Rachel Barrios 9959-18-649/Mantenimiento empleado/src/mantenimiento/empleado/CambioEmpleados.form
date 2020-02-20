@@ -31,11 +31,17 @@
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jScrollPane9" min="-2" pref="262" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="btnguardar" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="213" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel2" min="-2" pref="60" max="-2" attributes="0"/>
@@ -108,22 +114,11 @@
                                   <Component id="jScrollPane16" min="-2" pref="88" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="213" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="cmbdatosmodif" min="-2" pref="121" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jComboBox1" min="-2" pref="121" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="597" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -136,12 +131,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane1" pref="23" max="32767" attributes="0"/>
-                      <Component id="jLabel1" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane1" pref="23" max="32767" attributes="0"/>
+                  <Component id="jLabel1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -166,7 +158,7 @@
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel9" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="cmbdatosmodif" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="50" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -174,7 +166,7 @@
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                       <Component id="jScrollPane9" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnguardar" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -215,7 +207,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtcodigoemp">
+        <Component class="javax.swing.JTextPane" name="jTextPane1">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtingresocodigo" noResource="true"/>
           </Properties>
@@ -271,7 +263,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtnombre">
+        <Component class="javax.swing.JTextPane" name="jTextPane2">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtnobmre" noResource="true"/>
           </Properties>
@@ -285,7 +277,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtapellido">
+        <Component class="javax.swing.JTextPane" name="jTextPane3">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtapellido" noResource="true"/>
           </Properties>
@@ -299,7 +291,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtpuesto">
+        <Component class="javax.swing.JTextPane" name="jTextPane4">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtpuesto" noResource="true"/>
           </Properties>
@@ -313,7 +305,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtsueldo">
+        <Component class="javax.swing.JTextPane" name="jTextPane5">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtsueldo" noResource="true"/>
           </Properties>
@@ -327,7 +319,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtubicacion">
+        <Component class="javax.swing.JTextPane" name="jTextPane6">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtubicacion" noResource="true"/>
           </Properties>
@@ -341,7 +333,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtfechaini">
+        <Component class="javax.swing.JTextPane" name="jTextPane7">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtfechaini" noResource="true"/>
           </Properties>
@@ -355,7 +347,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txttelefono">
+        <Component class="javax.swing.JTextPane" name="jTextPane8">
           <Properties>
             <Property name="name" type="java.lang.String" value="txttelefono" noResource="true"/>
           </Properties>
@@ -368,24 +360,20 @@
         <Property name="name" type="java.lang.String" value="lblingresomodificar" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cmbdatosmodif">
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="8">
-            <StringItem index="0" value="           "/>
-            <StringItem index="1" value="Nombre"/>
-            <StringItem index="2" value="Apellido"/>
-            <StringItem index="3" value="Puesto"/>
-            <StringItem index="4" value="Sueldo"/>
-            <StringItem index="5" value="Fecha Inicio"/>
-            <StringItem index="6" value="Ubicacion"/>
-            <StringItem index="7" value="Telefono"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
         <Property name="name" type="java.lang.String" value="cboseleccion" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbdatosmodifActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -404,7 +392,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtingresondato">
+        <Component class="javax.swing.JTextPane" name="jTextPane9">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtnuevodato" noResource="true"/>
           </Properties>
@@ -418,7 +406,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtapellido2">
+        <Component class="javax.swing.JTextPane" name="jTextPane10">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtapellido" noResource="true"/>
           </Properties>
@@ -444,7 +432,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtpuesto2">
+        <Component class="javax.swing.JTextPane" name="jTextPane11">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtpuesto" noResource="true"/>
           </Properties>
@@ -470,7 +458,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtsueldo2">
+        <Component class="javax.swing.JTextPane" name="jTextPane12">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtsueldo" noResource="true"/>
           </Properties>
@@ -496,7 +484,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtubicacion2">
+        <Component class="javax.swing.JTextPane" name="jTextPane13">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtubicacion" noResource="true"/>
           </Properties>
@@ -516,7 +504,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtfechaini2">
+        <Component class="javax.swing.JTextPane" name="jTextPane14">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtfechaini" noResource="true"/>
           </Properties>
@@ -530,7 +518,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtnombre2">
+        <Component class="javax.swing.JTextPane" name="jTextPane15">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtnnobmre" noResource="true"/>
           </Properties>
@@ -544,29 +532,20 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txttelefono2">
+        <Component class="javax.swing.JTextPane" name="jTextPane16">
           <Properties>
             <Property name="name" type="java.lang.String" value="txttelefono" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnguardar">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Guardar"/>
         <Property name="name" type="java.lang.String" value="btnguardar" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnguardarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnBuscar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar"/>
-        <Property name="name" type="java.lang.String" value="btncodigoemp" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

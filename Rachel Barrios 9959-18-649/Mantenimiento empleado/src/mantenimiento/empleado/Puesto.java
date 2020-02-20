@@ -178,17 +178,17 @@ public class Puesto extends javax.swing.JFrame {
     private void btnBuscarPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPuestoActionPerformed
 String puesto = txtBuscaPuesto.getText().trim();
         if(puesto.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del departamento!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del puesto!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         } 
         try {
-            AccesoAleatorio.crearFileEmpleado( new File("puesto.dat") );
-            int i = AccesoAleatorio.buscarRegistro( puesto );
+            AccesoAleatorio.crearFilePuesto( new File("puesto.txt") );
+            int i = AccesoAleatorio.buscarRegistroPuesto( puesto );
             if(i==-1) {
                 JOptionPane.showMessageDialog(this, "Ningún registro coincide con los datos de búsqueda.", "Advertencia", JOptionPane.WARNING_MESSAGE);             
                 return;
             }
-            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: "+AccesoAleatorio.getEmpleado(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La primera coincidencia indica: "+AccesoAleatorio.getPuestos(i), "Notificación", JOptionPane.INFORMATION_MESSAGE);
             AccesoAleatorio.cerrar();
         } catch(IOException e) {
             JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -197,13 +197,14 @@ String puesto = txtBuscaPuesto.getText().trim();
 
     private void btnCrearPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPuestoActionPerformed
 String puesto = txtCrearPuesto.getText().trim();
+int id=0;
         if (puesto.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del puesto!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }  
         try {
-            AccesoAleatorio.crearFileEmpleado( new File("puesto.dat") );
-            AccesoAleatorio.añadirPersona( new MantenimientoEmpleado(puesto,true) );
+            AccesoAleatorio.crearFilePuesto( new File("puesto.txt") );
+            AccesoAleatorio.añadirPuesto( new MantenimientoPuesto(id++,puesto,true) );
             AccesoAleatorio.cerrar();
             JOptionPane.showMessageDialog(this, "El registro se realizó correctamente.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
@@ -214,8 +215,8 @@ String puesto = txtCrearPuesto.getText().trim();
 
     private void btnEliminarPuesto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPuesto1ActionPerformed
 try {
-            AccesoAleatorio.crearFileEmpleado(new File("puesto.dat"));
-            if( AccesoAleatorio.eliminarEmpleado(txtEliminarPuesto.getText()) )
+            AccesoAleatorio.crearFilePuesto(new File("puesto.txt"));
+            if( AccesoAleatorio.eliminarPuesto(txtEliminarPuesto.getText()) )
                 JOptionPane.showMessageDialog(this, "El registro correspondiente fue eliminado correctamente.", "Eliminación correcta", JOptionPane.INFORMATION_MESSAGE);
             else JOptionPane.showMessageDialog(this, "Error al intentar eliminar un registro inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {

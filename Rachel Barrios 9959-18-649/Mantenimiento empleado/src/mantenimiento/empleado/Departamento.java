@@ -14,12 +14,13 @@ import javax.swing.JOptionPane;
  * @author ranbr
  */
 public class Departamento extends javax.swing.JFrame {
-
+int id=0;
     /**
      * Creates new form Departamento
      */
     public Departamento() {
         initComponents();
+        
     }
 
     /**
@@ -169,8 +170,8 @@ public class Departamento extends javax.swing.JFrame {
 
     private void btnCrearDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearDepartamentoActionPerformed
 String departamento = txtCrearDepartamento.getText().trim();
-int id=0;
-id++;
+
+
         if (departamento.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del departamento!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
@@ -178,7 +179,8 @@ id++;
         
         try {
             AccesoAleatorio.crearFileDepartamento( new File("departamento.txt") );
-            AccesoAleatorio.añadirDepartamento( new MantenimientoEmpleado(id,departamento,true) );
+            id++;
+            AccesoAleatorio.añadirDepartamento( new  MantenimientoDepartamento(id,departamento,true) );
             AccesoAleatorio.cerrar();
             JOptionPane.showMessageDialog(this, "El registro se realizó correctamente.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
@@ -188,7 +190,8 @@ id++;
     }//GEN-LAST:event_btnCrearDepartamentoActionPerformed
 
     private void btnBuscarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDepartamentoActionPerformed
- String departamento = txtBuscarDepartamento.getText().trim();
+ 
+        String departamento = txtBuscarDepartamento.getText().trim();
         if(departamento.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el nombre del departamento!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;

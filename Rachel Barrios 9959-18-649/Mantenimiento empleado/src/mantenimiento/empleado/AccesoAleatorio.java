@@ -16,7 +16,7 @@ import java.io.RandomAccessFile;
 public class AccesoAleatorio {
 
     private static RandomAccessFile flujo;
-    private static int numeroRegistros;
+    private static int numeroRegistros, numeroRegistrosDepto;
     private static int tamañoRegistro = 80;
 
     public static void crearFileEmpleado(File archivo) throws IOException {
@@ -33,6 +33,15 @@ public class AccesoAleatorio {
     }
     
     public static void crearFileDepartamento(File archivo) throws IOException {
+        if (archivo.exists() && !archivo.isFile()) {
+            throw new IOException(archivo.getName() + " no es un archivo");
+        }
+        flujo = new RandomAccessFile(archivo, "rw");
+        numeroRegistrosDepto = (int) Math.ceil(
+                (double) flujo.length() / (double) tamañoRegistro);
+    }
+    
+    public static void crearFilePuesto(File archivo) throws IOException {
         if (archivo.exists() && !archivo.isFile()) {
             throw new IOException(archivo.getName() + " no es un archivo");
         }
@@ -68,8 +77,8 @@ public class AccesoAleatorio {
     }
      
      
-     public static boolean setDepartamento(int i, MantenimientoEmpleado departamento) throws IOException {
-        if(i >= 0 && i <= getNumeroRegistros()) {
+     public static boolean setDepartamento(int i, MantenimientoDepartamento departamento) throws IOException {
+        if(i >= 0 && i <= getNumeroRegistrosDepto()) {
             if(departamento.getTamañoDepto() > tamañoRegistro) {
                 System.out.println("\nTamaño de registro excedido.");
             } else {
@@ -77,6 +86,23 @@ public class AccesoAleatorio {
                 flujo.writeInt(departamento.getId());
                 flujo.writeUTF(departamento.getDepartamento());
                 flujo.writeBoolean(departamento.isActivo());
+                return true;
+            }
+        } else {
+            System.out.println("\nNúmero de registro fuera de límites.");
+        }
+        return false;
+    }
+     
+     public static boolean setPuesto(int i, MantenimientoPuesto puesto) throws IOException {
+        if(i >= 0 && i <= getNumeroRegistros()) {
+            if(puesto.getTamañoPuesto() > tamañoRegistro) {
+                System.out.println("\nTamaño de registro excedido.");
+            } else {
+                flujo.seek(i*tamañoRegistro);
+                flujo.writeInt(puesto.getId());
+                flujo.writeUTF(puesto.getPuesto());
+                flujo.writeBoolean(puesto.isActivo());
                 return true;
             }
         } else {
@@ -98,10 +124,21 @@ public class AccesoAleatorio {
      
        private static int buscarRegistroInactivoDepto() throws IOException {
         String nombre;
-        for(int i=0; i<getNumeroRegistros(); i++) 
+        for(int i=0; i<getNumeroRegistrosDepto(); i++) 
         {
             flujo.seek(i * tamañoRegistro);
             if(!getDepartamentos(i).isActivo()) 
+                return i;
+        }
+        return -1;        
+    }
+       
+          private static int buscarRegistroInactivoPuesto() throws IOException {
+        String nombre;
+        for(int i=0; i<getNumeroRegistros(); i++) 
+        {
+            flujo.seek(i * tamañoRegistro);
+            if(!getPuestos(i).isActivo()) 
                 return i;
         }
         return -1;        
@@ -119,9 +156,18 @@ public class AccesoAleatorio {
      public static boolean eliminarDepartamento(String aEliminar) throws IOException {
         int pos = buscarRegistroDepto(aEliminar);
         if(pos == -1) return false;
-        MantenimientoEmpleado departamentoEliminada = getDepartamentos(pos);
+        MantenimientoDepartamento departamentoEliminada = getDepartamentos(pos);
         departamentoEliminada.setActivo(false);
         setDepartamento(pos, departamentoEliminada);
+        return true;
+    }
+     
+      public static boolean eliminarPuesto(String aEliminar) throws IOException {
+        int pos = buscarRegistroPuesto(aEliminar);
+        if(pos == -1) return false;
+        MantenimientoPuesto puestoEliminada = getPuestos(pos);
+        puestoEliminada.setActivo(false);
+        setPuesto(pos, puestoEliminada);
         return true;
     }
     
@@ -145,17 +191,35 @@ public class AccesoAleatorio {
     
     public static void compactarArchivoDepto(File archivo) throws IOException {
         crearFileDepartamento(archivo); // Abrimos el flujo.
-        MantenimientoEmpleado[] listado = new MantenimientoEmpleado[numeroRegistros];
-        for(int i=0; i<numeroRegistros; ++i)
+         MantenimientoDepartamento[] listado = new  MantenimientoDepartamento[numeroRegistrosDepto];
+        for(int i=0; i<numeroRegistrosDepto; ++i)
             listado[i] = getDepartamentos(i);
         cerrar(); // Cerramos el flujo.
         archivo.delete(); // Borramos el archivo.
 
         File tempo = new File("temporalDepto.txt");
         crearFileDepartamento(tempo); // Como no existe se crea.
-        for(MantenimientoEmpleado p : listado)
+        for( MantenimientoDepartamento p : listado)
             if(p.isActivo())
                 añadirDepartamento(p);
+        cerrar();
+        
+        tempo.renameTo(archivo); // Renombramos.
+    }
+    
+     public static void compactarArchivoPuesto(File archivo) throws IOException {
+        crearFilePuesto(archivo); // Abrimos el flujo.
+         MantenimientoPuesto[] listado = new  MantenimientoPuesto[numeroRegistros];
+        for(int i=0; i<numeroRegistros; ++i)
+            listado[i] = getPuestos(i);
+        cerrar(); // Cerramos el flujo.
+        archivo.delete(); // Borramos el archivo.
+
+        File tempo = new File("temporalDepto.txt");
+        crearFileDepartamento(tempo); // Como no existe se crea.
+        for( MantenimientoPuesto p : listado)
+            if(p.isActivo())
+                añadirPuesto(p);
         cerrar();
         
         tempo.renameTo(archivo); // Renombramos.
@@ -169,14 +233,24 @@ public class AccesoAleatorio {
             numeroRegistros++;        
     }
     
-     public static void añadirDepartamento(MantenimientoEmpleado departamento) throws IOException {
+     public static void añadirDepartamento( MantenimientoDepartamento departamento) throws IOException {
         int inactivo = buscarRegistroInactivoDepto();
-        if(setDepartamento(inactivo==-1?numeroRegistros:inactivo, departamento)) 
+        if(setDepartamento(inactivo==-1?numeroRegistrosDepto:inactivo, departamento)) 
+            numeroRegistrosDepto++;        
+    }
+     
+      public static void añadirPuesto( MantenimientoPuesto puesto) throws IOException {
+        int inactivo = buscarRegistroInactivoPuesto();
+        if(setPuesto(inactivo==-1?numeroRegistros:inactivo, puesto)) 
             numeroRegistros++;        
     }
 
     public static int getNumeroRegistros() {
         return numeroRegistros;
+    }
+    
+    public static int getNumeroRegistrosDepto() {
+        return numeroRegistrosDepto;
     }
 
     public static MantenimientoEmpleado getEmpleado(int i) throws IOException {
@@ -189,10 +263,20 @@ public class AccesoAleatorio {
         }
     }
     
-     public static MantenimientoEmpleado getDepartamentos(int i) throws IOException {
+     public static  MantenimientoDepartamento getDepartamentos(int i) throws IOException {
+        if(i >= 0 && i <= getNumeroRegistrosDepto()) {
+            flujo.seek(i * tamañoRegistro);
+            return new  MantenimientoDepartamento(flujo.readInt(),flujo.readUTF(), flujo.readBoolean());
+        } else {
+            System.out.println("\nNúmero de registro fuera de límites.");
+            return null;
+        }
+    }
+     
+     public static  MantenimientoPuesto getPuestos(int i) throws IOException {
         if(i >= 0 && i <= getNumeroRegistros()) {
             flujo.seek(i * tamañoRegistro);
-            return new MantenimientoEmpleado(flujo.readInt(),flujo.readUTF(), flujo.readBoolean());
+            return new  MantenimientoPuesto(flujo.readInt(),flujo.readUTF(), flujo.readBoolean());
         } else {
             System.out.println("\nNúmero de registro fuera de límites.");
             return null;
@@ -215,14 +299,29 @@ public class AccesoAleatorio {
     }
     
     public static int buscarRegistroDepto(String buscado) throws IOException {
-        MantenimientoEmpleado p;
+         MantenimientoDepartamento p;
+        if (buscado == null) {
+            return -1;
+        }
+        for(int i=0; i<getNumeroRegistrosDepto(); i++) {
+            flujo.seek(i * tamañoRegistro);
+            p = getDepartamentos(i);
+            if(p.getDepartamento().equals(buscado) && p.isActivo()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public static int buscarRegistroPuesto(String buscado) throws IOException {
+         MantenimientoPuesto p;
         if (buscado == null) {
             return -1;
         }
         for(int i=0; i<getNumeroRegistros(); i++) {
             flujo.seek(i * tamañoRegistro);
-            p = getDepartamentos(i);
-            if(p.getDepartamento().equals(buscado) && p.isActivo()) {
+            p = getPuestos(i);
+            if(p.getPuesto().equals(buscado) && p.isActivo()) {
                 return i;
             }
         }
