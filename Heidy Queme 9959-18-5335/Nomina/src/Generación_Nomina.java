@@ -25,9 +25,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class Generación_Nomina extends javax.swing.JFrame {
     /**
-     * Creates new form Generación_Nomina
+     * Crea un objeto de tipo AccesoAleatorioN para poder utilizar sus funciones.
      */
     AccesoAleatorioN aleatorio=new AccesoAleatorioN();
+        /**
+     * Las advertensias se inicializan como invisibles. Se activan solo si el usuario inclumple parámetros establecidos.
+     */
     public Generación_Nomina() {
         initComponents();
         lblIngreseNum.setVisible(false);
@@ -38,12 +41,15 @@ public class Generación_Nomina extends javax.swing.JFrame {
         lblIngreseNum5.setVisible(false);
         advertencia.setVisible(false);
         txtBonificacionIncentivo.setText("250.00");txtIsr.setText("0");
+            /**
+     * Redondea las variables de tipo float
+     */
         DecimalFormat formato1 = new DecimalFormat("#.00");
         
         
-        //PONER EN EL BOTON DE GENERACIÓN NOMINA
-        
-        //REFRESCAR LISTA DE DEPARTAMENTOS
+    /**
+     * Actualiza los datos en el combobox Departamento.
+     */
                 int registros=1000;
         FileReader fr;
         try {
@@ -59,7 +65,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
         } catch (IOException ex) {
         }
         
-        //REFRESCAR LISTA DE NOMBRES
+           /**
+     * Actualiza los datos en el combobox Nombre Empleado.
+     */
         try {
             fr = new FileReader("NombreEmpleados.txt");
             BufferedReader bf=new BufferedReader(fr);
@@ -73,7 +81,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
         } catch (IOException ex) {
         }
         
-        
+            /**
+     * Actualiza los datos en el combobox Puesto.
+     */
         try {
             fr = new FileReader("Puestos.txt");
             BufferedReader bf=new BufferedReader(fr);
@@ -496,6 +506,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOtrosDescuentosActionPerformed
 
+        /**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     */
     private void txtComisionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComisionesKeyTyped
         // TODO add your handling code here:
         char validar=evt.getKeyChar();
@@ -508,7 +521,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
             lblIngreseNum1.setVisible(false);
         }
     }//GEN-LAST:event_txtComisionesKeyTyped
-
+        /**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     */
     private void txtBonificacionesExtraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBonificacionesExtraKeyTyped
         // TODO add your handling code here:
                 char validar=evt.getKeyChar();
@@ -521,7 +536,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
             lblIngreseNum2.setVisible(false);
         }
     }//GEN-LAST:event_txtBonificacionesExtraKeyTyped
-
+        /**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     */
     private void txtAnticiposKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnticiposKeyTyped
         // TODO add your handling code here:
                 char validar=evt.getKeyChar();
@@ -534,7 +551,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
             lblIngreseNum.setVisible(false);
         }
     }//GEN-LAST:event_txtAnticiposKeyTyped
-
+        /**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     */
     private void txtDescuentosJKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescuentosJKeyTyped
         // TODO add your handling code here:
                 char validar=evt.getKeyChar();
@@ -547,7 +566,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
             lblIngreseNum4.setVisible(false);
         }
     }//GEN-LAST:event_txtDescuentosJKeyTyped
-
+        /**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     */
     private void txtOtrosDescuentosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOtrosDescuentosKeyTyped
         // TODO add your handling code here:
                 char validar=evt.getKeyChar();
@@ -560,7 +581,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
             lblIngreseNum5.setVisible(false);
         }
     }//GEN-LAST:event_txtOtrosDescuentosKeyTyped
-
+        /**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     * El KeyReleased mantiene actualizados los JTextField que requieren de los datos para hacer calculos automáticos.
+     */
     private void txtSueldoBaseKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldoBaseKeyReleased
 
         String strSueldoBase=txtSueldoBase.getText();
@@ -624,7 +648,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
        
         }
     }//GEN-LAST:event_txtSueldoBaseKeyReleased
-
+/**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     * El KeyReleased mantiene actualizados los JTextField que requieren de los datos para hacer calculos automáticos.
+     */
     private void txtComisionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComisionesKeyReleased
 
         String strSueldoBase=txtSueldoBase.getText();
@@ -686,7 +713,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
        }
         }
     }//GEN-LAST:event_txtComisionesKeyReleased
-
+/**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     * El KeyReleased mantiene actualizados los JTextField que requieren de los datos para hacer calculos automáticos.
+     */
     private void txtBonificacionesExtraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBonificacionesExtraKeyReleased
 
         String strSueldoBase=txtSueldoBase.getText();
@@ -749,7 +779,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_txtBonificacionesExtraKeyReleased
-
+/**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     * El KeyReleased mantiene actualizados los JTextField que requieren de los datos para hacer calculos automáticos.
+     */
     private void txtIgssKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIgssKeyReleased
 
         String strIgss=txtIgss.getText();
@@ -789,7 +822,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtIgssKeyReleased
-
+/**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     * El KeyReleased mantiene actualizados los JTextField que requieren de los datos para hacer calculos automáticos.
+     */
     private void txtIsrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIsrKeyReleased
 String strIgss=txtIgss.getText();
         String strIsr=txtIsr.getText();
@@ -828,7 +864,10 @@ String strIgss=txtIgss.getText();
 
         }        // TODO add your handling code here:
     }//GEN-LAST:event_txtIsrKeyReleased
-
+/**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     * El KeyReleased mantiene actualizados los JTextField que requieren de los datos para hacer calculos automáticos.
+     */
     private void txtAnticiposKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnticiposKeyReleased
 String strIgss=txtIgss.getText();
         String strIsr=txtIsr.getText();
@@ -867,7 +906,10 @@ String strIgss=txtIgss.getText();
 
         }        // TODO add your handling code here:
     }//GEN-LAST:event_txtAnticiposKeyReleased
-
+/**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     * El KeyReleased mantiene actualizados los JTextField que requieren de los datos para hacer calculos automáticos.
+     */
     private void txtDescuentosJKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescuentosJKeyReleased
 String strIgss=txtIgss.getText();
         String strIsr=txtIsr.getText();
@@ -906,7 +948,10 @@ String strIgss=txtIgss.getText();
 
         }        // TODO add your handling code here:
     }//GEN-LAST:event_txtDescuentosJKeyReleased
-
+/**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     * El KeyReleased mantiene actualizados los JTextField que requieren de los datos para hacer calculos automáticos.
+     */
     private void txtOtrosDescuentosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOtrosDescuentosKeyReleased
 String strIgss=txtIgss.getText();
         String strIsr=txtIsr.getText();
@@ -949,7 +994,9 @@ String strIgss=txtIgss.getText();
     private void cmbxDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxDepartamentoActionPerformed
 
     }//GEN-LAST:event_cmbxDepartamentoActionPerformed
-
+/**
+     * Llena la tabla NombreEmpleado cuando se ingresa a Generación de Planilla según los empleados en el archivo.
+     */
     private void cmbxNombreEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxNombreEmpleadoActionPerformed
         // TODO add your handling code here:
         int registros=1000;
@@ -978,7 +1025,9 @@ String strIgss=txtIgss.getText();
         // TODO add your handling code here:
         
     }//GEN-LAST:event_cmbxNombreEmpleadoKeyReleased
-
+/**
+     * Condiciona para que el usuario pueda escribir solamente números.
+     */
     private void txtSueldoBaseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldoBaseKeyTyped
         // TODO add your handling code here:
                 char validar=evt.getKeyChar();
@@ -996,7 +1045,9 @@ String strIgss=txtIgss.getText();
     private void txtSueldoBaseInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtSueldoBaseInputMethodTextChanged
       // TODO add your handling code here:
     }//GEN-LAST:event_txtSueldoBaseInputMethodTextChanged
-
+/**
+     * Llena la tabla NombreEmpleado cuando se ingresa a Generación de Planilla según los empleados en el archivo.
+     */
     private void cmbxNombreEmpleadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbxNombreEmpleadoKeyPressed
         // TODO add your handling code here:
                 FileReader fr;
@@ -1029,10 +1080,11 @@ String strIgss=txtIgss.getText();
         } catch (IOException ex) {
         }  
     }//GEN-LAST:event_cmbxNombreEmpleadoKeyPressed
-
+/**
+     * Ingresa al empleado en el JTable y en un archivo llamado Nomina, donde se guarda un registro de respaldo.
+     */
     private void IngresarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarEmpleadoActionPerformed
-        // TODO add your handling code here:
-       
+        // TODO add your handling code here:       
         String departamento="", puesto="", nombre="", sueldo="", comisiones="", bonificacionesextra="", incentivo="", sueldodevengado="";
         String igss="", isr="", anticipos="", descuentosj="", otrosdescuentos="", totaldescuentos="", liquido="", formapago="";
         if(sueldo!=""&&comisiones!=""&&bonificacionesextra!=""&&anticipos!=""&&descuentosj!=""&&totaldescuentos!=""){
@@ -1079,13 +1131,18 @@ String strIgss=txtIgss.getText();
        } else{
            advertencia.setVisible(true);
        }
+        
+        //IMPRESION EN TABLA
+        
     
     }//GEN-LAST:event_IngresarEmpleadoActionPerformed
 
     private void txtSueldoBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSueldoBaseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSueldoBaseActionPerformed
-
+/**
+     * Luego de ingresar un empleado limpia los JTextField para poder ingresar un nuevo empleado.
+     */
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
         // TODO add your handling code here:
         txtSueldoBase.setText("");
