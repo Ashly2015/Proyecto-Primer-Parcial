@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -35,6 +36,9 @@ public class Generación_Nomina extends javax.swing.JFrame {
      */
     public Generación_Nomina() {
         initComponents();
+         setLocationRelativeTo(null);
+       setSize(1000,800);
+     
         lblIngreseNum.setVisible(false);
         lblIngreseNum1.setVisible(false);
         lblIngreseNum2.setVisible(false);
@@ -111,8 +115,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         lblIngresodeDatos = new javax.swing.JLabel();
-        lblGeneraciondePlanilla = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         cmbxDepartamento = new javax.swing.JComboBox<>();
         lblDepartamento = new javax.swing.JLabel();
         lblPuesto = new javax.swing.JLabel();
@@ -129,6 +135,16 @@ public class Generación_Nomina extends javax.swing.JFrame {
         txtBonificacionIncentivo = new javax.swing.JTextField();
         lblSueldoDevengado = new javax.swing.JLabel();
         txtSueldoDevengado = new javax.swing.JTextField();
+        lblCalculodeIngresos = new javax.swing.JLabel();
+        lblIngreseNum1 = new javax.swing.JLabel();
+        lblIngreseNum2 = new javax.swing.JLabel();
+        lblIngreseNum = new javax.swing.JLabel();
+        lblIngreseNum4 = new javax.swing.JLabel();
+        lblIngreseNum5 = new javax.swing.JLabel();
+        IngresarEmpleado = new javax.swing.JButton();
+        Limpiar = new javax.swing.JButton();
+        advertencia = new javax.swing.JLabel();
+        lblIngreseNum6 = new javax.swing.JLabel();
         lblIgss = new javax.swing.JLabel();
         txtIgss = new javax.swing.JTextField();
         lblIsr = new javax.swing.JLabel();
@@ -139,59 +155,41 @@ public class Generación_Nomina extends javax.swing.JFrame {
         txtDescuentosJ = new javax.swing.JTextField();
         lblOtrosDescuentos = new javax.swing.JLabel();
         txtOtrosDescuentos = new javax.swing.JTextField();
-        lblCalculodeIngresos = new javax.swing.JLabel();
         lblCalculodeDescuentos = new javax.swing.JLabel();
         lblTotalDescuentos = new javax.swing.JLabel();
         txtTotalDescuentos = new javax.swing.JTextField();
         lblTotalDescuentos1 = new javax.swing.JLabel();
         txtSueldoLiquido = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         lblFormadePago = new javax.swing.JLabel();
         cmbxFormadePago = new javax.swing.JComboBox<>();
+        lblGeneraciondePlanilla = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TbPreNomina = new javax.swing.JTable();
-        lblIngreseNum1 = new javax.swing.JLabel();
-        lblIngreseNum2 = new javax.swing.JLabel();
-        lblIngreseNum = new javax.swing.JLabel();
-        lblIngreseNum4 = new javax.swing.JLabel();
-        lblIngreseNum5 = new javax.swing.JLabel();
-        IngresarEmpleado = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        Limpiar = new javax.swing.JButton();
-        advertencia = new javax.swing.JLabel();
-        lblIngreseNum6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generación de Nómina");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setPreferredSize(new java.awt.Dimension(938, 894));
+
+        jScrollPane2.setAutoscrolls(true);
 
         lblIngresodeDatos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblIngresodeDatos.setText("Ingreso de Datos");
-        getContentPane().add(lblIngresodeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        lblGeneraciondePlanilla.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblGeneraciondePlanilla.setText("Generación de Planilla");
-        getContentPane().add(lblGeneraciondePlanilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 11, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setText("*Si el empleado no tiene algun ingreso o descuento, coloque un 0 en la casilla.");
 
         cmbxDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbxDepartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbxDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 123, 120, -1));
 
         lblDepartamento.setText("Departamento:");
-        getContentPane().add(lblDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 103, 104, -1));
 
         lblPuesto.setText("Puesto:");
-        getContentPane().add(lblPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 103, 104, -1));
-
-        getContentPane().add(cmbxPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 123, 120, -1));
 
         lblNombreEmpleado.setText("Nombre Empleado:");
-        getContentPane().add(lblNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 103, 104, -1));
 
         cmbxNombreEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,10 +204,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 cmbxNombreEmpleadoKeyReleased(evt);
             }
         });
-        getContentPane().add(cmbxNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 123, 120, -1));
 
         lblSueldoBase.setText("Sueldo Base:");
-        getContentPane().add(lblSueldoBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
 
         txtSueldoBase.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
@@ -231,7 +227,6 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtSueldoBaseKeyTyped(evt);
             }
         });
-        getContentPane().add(txtSueldoBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 120, -1));
 
         txtComisiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,13 +241,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtComisionesKeyTyped(evt);
             }
         });
-        getContentPane().add(txtComisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 216, 120, -1));
 
         lblComisiones.setText("Comisiones:");
-        getContentPane().add(lblComisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 196, 104, -1));
 
         lblBonificacionesExtra.setText("Bonificaciones Extra:");
-        getContentPane().add(lblBonificacionesExtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 196, 104, -1));
 
         txtBonificacionesExtra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,10 +259,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtBonificacionesExtraKeyTyped(evt);
             }
         });
-        getContentPane().add(txtBonificacionesExtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 216, 120, -1));
 
         lblBonificacionIncentivo.setText("Bonificacion Incentivo:");
-        getContentPane().add(lblBonificacionIncentivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 196, -1, -1));
 
         txtBonificacionIncentivo.setEditable(false);
         txtBonificacionIncentivo.addActionListener(new java.awt.event.ActionListener() {
@@ -278,10 +268,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtBonificacionIncentivoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtBonificacionIncentivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 216, 120, -1));
 
         lblSueldoDevengado.setText("Sueldo Devengado:");
-        getContentPane().add(lblSueldoDevengado, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 196, 104, -1));
 
         txtSueldoDevengado.setEditable(false);
         txtSueldoDevengado.addActionListener(new java.awt.event.ActionListener() {
@@ -289,10 +277,40 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtSueldoDevengadoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSueldoDevengado, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 216, 120, -1));
+
+        lblCalculodeIngresos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCalculodeIngresos.setText("Calculo de Ingresos");
+
+        lblIngreseNum1.setText("Ingrese números");
+
+        lblIngreseNum2.setText("Ingrese números");
+
+        lblIngreseNum.setText("Ingrese números");
+
+        lblIngreseNum4.setText("Ingrese números");
+
+        lblIngreseNum5.setText("Ingrese números");
+
+        IngresarEmpleado.setText("Ingresar Empleado a Nómina");
+        IngresarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IngresarEmpleadoActionPerformed(evt);
+            }
+        });
+
+        Limpiar.setText("Limpiar");
+        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarActionPerformed(evt);
+            }
+        });
+
+        advertencia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        advertencia.setText("ADVERTENCIA: No todos los campos están llenos");
+
+        lblIngreseNum6.setText("Ingrese números");
 
         lblIgss.setText("IGSS:");
-        getContentPane().add(lblIgss, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 312, 104, -1));
 
         txtIgss.setEditable(false);
         txtIgss.addActionListener(new java.awt.event.ActionListener() {
@@ -305,10 +323,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtIgssKeyReleased(evt);
             }
         });
-        getContentPane().add(txtIgss, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 332, 112, -1));
 
         lblIsr.setText("ISR:");
-        getContentPane().add(lblIsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 312, 104, -1));
 
         txtIsr.setEditable(false);
         txtIsr.addActionListener(new java.awt.event.ActionListener() {
@@ -321,7 +337,6 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtIsrKeyReleased(evt);
             }
         });
-        getContentPane().add(txtIsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 332, 104, -1));
 
         txtAnticipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,13 +351,10 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtAnticiposKeyTyped(evt);
             }
         });
-        getContentPane().add(txtAnticipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 329, 120, -1));
 
         lblAnticipos.setText("Anticipos Concedidos:");
-        getContentPane().add(lblAnticipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 309, -1, -1));
 
         lblDescuentosJ.setText("Descuentos Judiciales:");
-        getContentPane().add(lblDescuentosJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 309, -1, -1));
 
         txtDescuentosJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,10 +369,8 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtDescuentosJKeyTyped(evt);
             }
         });
-        getContentPane().add(txtDescuentosJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 329, 120, -1));
 
         lblOtrosDescuentos.setText("Otros Descuentos:");
-        getContentPane().add(lblOtrosDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 309, 120, -1));
 
         txtOtrosDescuentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,36 +385,28 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 txtOtrosDescuentosKeyTyped(evt);
             }
         });
-        getContentPane().add(txtOtrosDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 329, 120, -1));
-
-        lblCalculodeIngresos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCalculodeIngresos.setText("Calculo de Ingresos");
-        getContentPane().add(lblCalculodeIngresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 161, -1, -1));
 
         lblCalculodeDescuentos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblCalculodeDescuentos.setText("Calculo de Descuentos");
-        getContentPane().add(lblCalculodeDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 277, -1, -1));
 
         lblTotalDescuentos.setText("Total Descuentos:");
-        getContentPane().add(lblTotalDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 379, -1, -1));
 
         txtTotalDescuentos.setEditable(false);
-        getContentPane().add(txtTotalDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 402, 120, -1));
 
         lblTotalDescuentos1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblTotalDescuentos1.setText("Sueldo Líquido:");
-        getContentPane().add(lblTotalDescuentos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 378, -1, -1));
 
         txtSueldoLiquido.setEditable(false);
         txtSueldoLiquido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        getContentPane().add(txtSueldoLiquido, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 399, 169, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 509, 1957, -1));
 
         lblFormadePago.setText("Forma de Pago:");
-        getContentPane().add(lblFormadePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 379, -1, -1));
 
         cmbxFormadePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Cheque" }));
-        getContentPane().add(cmbxFormadePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 402, 120, -1));
+
+        lblGeneraciondePlanilla.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblGeneraciondePlanilla.setText("Generación de Planilla");
+
+        jScrollPane1.setAutoscrolls(true);
 
         TbPreNomina.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -422,52 +424,239 @@ public class Generación_Nomina extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TbPreNomina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(TbPreNomina);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 522, 1937, 203));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIngresodeDatos)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblCalculodeIngresos)
+                                .addGap(314, 314, 314)
+                                .addComponent(lblIngreseNum))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(lblPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(lblNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(lblSueldoBase))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cmbxDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbxPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(cmbxNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(19, 19, 19)
+                                        .addComponent(txtSueldoBase, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblComisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(lblBonificacionesExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(lblBonificacionIncentivo)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(lblSueldoDevengado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtComisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtBonificacionesExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtBonificacionIncentivo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtSueldoDevengado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblIngreseNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblIngreseNum2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(120, 120, 120)
+                                .addComponent(IngresarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)
+                                .addComponent(Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addComponent(advertencia, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblCalculodeDescuentos)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(lblIgss, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(lblIsr, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblAnticipos)
+                                .addGap(33, 33, 33)
+                                .addComponent(lblDescuentosJ)
+                                .addGap(30, 30, 30)
+                                .addComponent(lblOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(txtIgss, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)
+                                .addComponent(txtIsr, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtAnticipos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDescuentosJ, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(303, 303, 303)
+                                .addComponent(lblIngreseNum6)
+                                .addGap(69, 69, 69)
+                                .addComponent(lblIngreseNum4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblIngreseNum5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(177, 177, 177)
+                                .addComponent(lblTotalDescuentos)
+                                .addGap(39, 39, 39)
+                                .addComponent(lblTotalDescuentos1)
+                                .addGap(92, 92, 92)
+                                .addComponent(lblFormadePago))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(177, 177, 177)
+                                .addComponent(txtTotalDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(txtSueldoLiquido, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbxFormadePago, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(lblGeneraciondePlanilla))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 2002, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(lblGeneraciondePlanilla)
+                .addGap(28, 28, 28)
+                .addComponent(lblIngresodeDatos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSueldoBase)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDepartamento)
+                            .addComponent(lblPuesto)
+                            .addComponent(lblNombreEmpleado))))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSueldoBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmbxPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbxDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbxNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(lblCalculodeIngresos))
+                    .addComponent(lblIngreseNum))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblComisiones)
+                    .addComponent(lblBonificacionesExtra)
+                    .addComponent(lblBonificacionIncentivo)
+                    .addComponent(lblSueldoDevengado))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtComisiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBonificacionesExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBonificacionIncentivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSueldoDevengado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIngreseNum1)
+                    .addComponent(lblIngreseNum2))
+                .addGap(27, 27, 27)
+                .addComponent(lblCalculodeDescuentos)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAnticipos)
+                    .addComponent(lblDescuentosJ)
+                    .addComponent(lblOtrosDescuentos)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIgss)
+                            .addComponent(lblIsr))))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAnticipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDescuentosJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOtrosDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIgss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIsr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIngreseNum6)
+                    .addComponent(lblIngreseNum4)
+                    .addComponent(lblIngreseNum5))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotalDescuentos1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTotalDescuentos)
+                            .addComponent(lblFormadePago))))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSueldoLiquido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTotalDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbxFormadePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(IngresarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addComponent(advertencia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-        lblIngreseNum1.setText("Ingrese números");
-        getContentPane().add(lblIngreseNum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 242, 120, -1));
+        jScrollPane2.setViewportView(jPanel1);
 
-        lblIngreseNum2.setText("Ingrese números");
-        getContentPane().add(lblIngreseNum2, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 242, 120, -1));
-
-        lblIngreseNum.setText("Ingrese números");
-        getContentPane().add(lblIngreseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
-
-        lblIngreseNum4.setText("Ingrese números");
-        getContentPane().add(lblIngreseNum4, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 358, 120, -1));
-
-        lblIngreseNum5.setText("Ingrese números");
-        getContentPane().add(lblIngreseNum5, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 358, 120, -1));
-
-        IngresarEmpleado.setText("Ingresar Empleado a Nómina");
-        IngresarEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IngresarEmpleadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(IngresarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 230, 38));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("*Si el empleado no tiene algun ingreso o descuento, coloque un 0 en la casilla.");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 83, -1, -1));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, -1, -1));
-
-        Limpiar.setText("Limpiar");
-        Limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimpiarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 440, 110, 38));
-
-        advertencia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        advertencia.setText("ADVERTENCIA: No todos los campos están llenos");
-        getContentPane().add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 270, -1));
-
-        lblIngreseNum6.setText("Ingrese números");
-        getContentPane().add(lblIngreseNum6, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 358, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1089,7 +1278,7 @@ String strIgss=txtIgss.getText();
         // TODO add your handling code here:       
         String departamento="", puesto="", nombre="", sueldo="", comisiones="", bonificacionesextra="", incentivo="", sueldodevengado="";
         String igss="", isr="", anticipos="", descuentosj="", otrosdescuentos="", totaldescuentos="", liquido="", formapago="";
-        if(sueldo!=""&&comisiones!=""&&bonificacionesextra!=""&&anticipos!=""&&descuentosj!=""&&totaldescuentos!=""){
+        if(sueldo!=null&&comisiones!=null&&bonificacionesextra!=null&&anticipos!=null&&descuentosj!=null&&totaldescuentos!=null){
         advertencia.setVisible(false);
         departamento=(String)cmbxDepartamento.getSelectedItem();
         puesto=(String)cmbxPuesto.getSelectedItem();
@@ -1115,7 +1304,7 @@ String strIgss=txtIgss.getText();
             escritura = new FileWriter("Nomina.txt");
             pw = new PrintWriter(escritura);
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1; i++)
                 pw.println(departamento+" "+puesto+" "+nombre+" "+sueldo+" "+comisiones+" "+bonificacionesextra+" "+incentivo+" "+sueldodevengado+" "+igss+" "+isr+" "+anticipos+" "+descuentosj+" "+otrosdescuentos+" "+totaldescuentos+" "+liquido+" "+formapago);
 
         } catch (Exception e) {
@@ -1212,9 +1401,9 @@ String strIgss=txtIgss.getText();
     private javax.swing.JComboBox<String> cmbxNombreEmpleado;
     private javax.swing.JComboBox<String> cmbxPuesto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAnticipos;
     private javax.swing.JLabel lblBonificacionIncentivo;
     private javax.swing.JLabel lblBonificacionesExtra;
