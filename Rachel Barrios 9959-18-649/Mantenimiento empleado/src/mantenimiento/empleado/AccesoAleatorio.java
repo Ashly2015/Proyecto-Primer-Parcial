@@ -56,7 +56,7 @@ public class AccesoAleatorio {
                 System.out.println("\nTamaño de registro excedido.");
             } else {
                 flujo.seek(i*tamañoRegistro);
-                flujo.writeInt(empleado.getId());
+                flujo.writeUTF(empleado.getId());
                 flujo.writeUTF(empleado.getNombre());
                 flujo.writeUTF(empleado.getApellido());
                 flujo.writeUTF(empleado.getDepartamento());
@@ -83,7 +83,7 @@ public class AccesoAleatorio {
                 System.out.println("\nTamaño de registro excedido.");
             } else {
                 flujo.seek(i*tamañoRegistro);
-                flujo.writeInt(departamento.getId());
+                flujo.writeUTF(departamento.getId());
                 flujo.writeUTF(departamento.getDepartamento());
                 flujo.writeBoolean(departamento.isActivo());
                 return true;
@@ -100,7 +100,7 @@ public class AccesoAleatorio {
                 System.out.println("\nTamaño de registro excedido.");
             } else {
                 flujo.seek(i*tamañoRegistro);
-                flujo.writeInt(puesto.getId());
+                flujo.writeUTF(puesto.getId());
                 flujo.writeUTF(puesto.getPuesto());
                 flujo.writeBoolean(puesto.isActivo());
                 return true;
@@ -256,7 +256,7 @@ public class AccesoAleatorio {
     public static MantenimientoEmpleado getEmpleado(int i) throws IOException {
         if(i >= 0 && i <= getNumeroRegistros()) {
             flujo.seek(i * tamañoRegistro);
-            return new MantenimientoEmpleado(flujo.readInt(),flujo.readUTF(),flujo.readUTF(),flujo.readUTF(),flujo.readUTF(), flujo.readInt(),flujo.readInt(),flujo.readInt(),flujo.readInt(),flujo.readUTF(),flujo.readFloat(), flujo.readBoolean());
+            return new MantenimientoEmpleado(flujo.readUTF(),flujo.readUTF(),flujo.readUTF(),flujo.readUTF(),flujo.readUTF(), flujo.readInt(),flujo.readInt(),flujo.readInt(),flujo.readInt(),flujo.readUTF(),flujo.readFloat(), flujo.readBoolean());
         } else {
             System.out.println("\nNúmero de registro fuera de límites.");
             return null;
@@ -266,7 +266,7 @@ public class AccesoAleatorio {
      public static  MantenimientoDepartamento getDepartamentos(int i) throws IOException {
         if(i >= 0 && i <= getNumeroRegistrosDepto()) {
             flujo.seek(i * tamañoRegistro);
-            return new  MantenimientoDepartamento(flujo.readInt(),flujo.readUTF(), flujo.readBoolean());
+            return new  MantenimientoDepartamento(flujo.readUTF(),flujo.readUTF(), flujo.readBoolean());
         } else {
             System.out.println("\nNúmero de registro fuera de límites.");
             return null;
@@ -276,7 +276,7 @@ public class AccesoAleatorio {
      public static  MantenimientoPuesto getPuestos(int i) throws IOException {
         if(i >= 0 && i <= getNumeroRegistros()) {
             flujo.seek(i * tamañoRegistro);
-            return new  MantenimientoPuesto(flujo.readInt(),flujo.readUTF(), flujo.readBoolean());
+            return new  MantenimientoPuesto(flujo.readUTF(),flujo.readUTF(), flujo.readBoolean());
         } else {
             System.out.println("\nNúmero de registro fuera de límites.");
             return null;

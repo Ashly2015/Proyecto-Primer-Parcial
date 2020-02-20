@@ -15,20 +15,20 @@ public class MantenimientoPuesto implements Serializable{
 
     private String puesto;
     private boolean activo;
-    private int id;
+    private String id;
    
 
     public MantenimientoPuesto() {
         
         puesto = "NN";
-        id=0;
+        id="NN";
 
         activo = true;
     }
   
     
 
-    public MantenimientoPuesto(int id,String puesto, boolean activo) {
+    public MantenimientoPuesto(String id,String puesto, boolean activo) {
         this.id=id;
         this.puesto = puesto;
         this.activo = activo;
@@ -52,14 +52,15 @@ public class MantenimientoPuesto implements Serializable{
         this.activo = activo;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
-    
+
+   
 
     @Override
     public String toString() {

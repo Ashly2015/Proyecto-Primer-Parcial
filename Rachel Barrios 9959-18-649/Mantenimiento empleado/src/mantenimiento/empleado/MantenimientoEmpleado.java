@@ -15,7 +15,7 @@ public class MantenimientoEmpleado implements Serializable {
     private String ubicacion;
     private float sueldo;
     private boolean activo;
-    private int id;
+    private String id;
    
 
     public MantenimientoEmpleado() {
@@ -29,7 +29,7 @@ public class MantenimientoEmpleado implements Serializable {
         ubicacion = "NN";
         telefono = 0;
         sueldo = 0;
-        id=0;
+        id="NN";
 
         activo = true;
     }
@@ -37,7 +37,7 @@ public class MantenimientoEmpleado implements Serializable {
     
     
 
-    public MantenimientoEmpleado(int idEmpleado,String nombre, String apellido, String departamento, String puesto, int dia, int mes, int año, int telefono, String ubicacion, float sueldo, boolean activo) {
+    public MantenimientoEmpleado(String idEmpleado,String nombre, String apellido, String departamento, String puesto, int dia, int mes, int año, int telefono, String ubicacion, float sueldo, boolean activo) {
         this.id=idEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -52,7 +52,8 @@ public class MantenimientoEmpleado implements Serializable {
         this.activo = activo;
     }
 
-    public MantenimientoEmpleado(int id,String departamento, boolean activo) {
+    public MantenimientoEmpleado(String id,String departamento, boolean activo) {
+        this.id=id;
         this.departamento = departamento;
         this.activo = activo;
     }
@@ -149,13 +150,17 @@ public class MantenimientoEmpleado implements Serializable {
         this.activo = activo;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
+
+    
+
+    
     
 
     @Override
