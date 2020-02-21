@@ -243,6 +243,8 @@ public class Departamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarDepartamentoActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+Altas verAltas=new Altas();
+verAltas.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
 

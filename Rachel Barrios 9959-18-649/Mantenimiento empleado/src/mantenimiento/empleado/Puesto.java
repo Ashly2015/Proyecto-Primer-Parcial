@@ -177,7 +177,8 @@ public class Puesto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
+Altas verAltas=new Altas();
+verAltas.setVisible(true);       // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBuscarPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPuestoActionPerformed
